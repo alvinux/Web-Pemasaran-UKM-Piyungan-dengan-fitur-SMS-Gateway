@@ -15,6 +15,7 @@ class Home extends CI_Controller {
 	public function index()
 	{
 
+			$data['banner'] = $this->m_content->banner();
 			// $config['base_url'] = site_url('home/index');
 //		if ($this->session->userdata('login_user')['status'] === 'penjual') { redirect('home/list_produk'); } else { 
 			$data['provinsi'] = $this->m_content->provinsi();
@@ -26,7 +27,7 @@ class Home extends CI_Controller {
 			
 			$data['katagori'] = $this->m_produk->show_limited_category();//mengambil data katagori
 			$this->load->view('general/navbar');
-			$this->load->view('general/slider');
+			$this->load->view('general/slider',$data);
 			$this->load->view('general/katagori', $data);
 			$this->load->view('general/slide_terlaris');
 			$this->load->view('general/hotlist',$data);

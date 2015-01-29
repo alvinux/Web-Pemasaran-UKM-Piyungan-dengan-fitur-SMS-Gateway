@@ -6,6 +6,7 @@
                 <li data-target="#main-slider" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
+
                 <div class="item active" style="background-image: url(<?php echo base_url(); ?>doc/themes/public/images/slider/bg1.jpg)">
                     <div class="container">
                         <div class="row">
@@ -18,6 +19,7 @@
                         </div>
                     </div>
                 </div><!--/.item-->
+                
                 <div class="item" style="background-image: url(<?php echo base_url(); ?>doc/themes/public/images/slider/bg2.jpg)">
                     <div class="container">
                         <div class="row">

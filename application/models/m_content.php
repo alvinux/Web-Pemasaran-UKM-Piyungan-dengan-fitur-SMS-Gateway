@@ -62,6 +62,16 @@ Class M_content extends CI_Model {
         return $data;
     }
 
+    function banner(){
+        $query = $this->db->query("select * from set_banner");
+        if($query->num_rows>0){
+            return $query->row_array();
+        }else{
+            return false;
+        }
+
+    }
+
 
 
 

@@ -1,13 +1,13 @@
 <!-- Modal Register -->
-    <div id="myReg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="myReg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog">
-            <div class="modal-content panel panel-info">
+            <div class="modal-content panel panel-info ">
                 <div class="modal-header panel-heading">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                     <h3 class="modal-title" id="myModalLabel">Register</h3>
                 </div>
                 <!---------Form Reg-------------->
-                <div class="panel-body">
+                <div class="panel-body ">
                      <?php echo form_open('proses/proses_daftar_user'); ?>  
                          <div class="form-horizontal" >
                             <div class="form-group">
