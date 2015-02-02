@@ -21,6 +21,7 @@ class Home extends CI_Controller {
 			$data['provinsi'] = $this->m_content->provinsi();
 			$data['title']= 'Selamat Datang';
 			$data['hotlist'] = $this->m_produk->show_hot_item();
+			$data['terlaris'] = $this->m_produk->show_terlaris();
 
 			//load View
 			$this->load->view('base/head', $data);
@@ -29,7 +30,7 @@ class Home extends CI_Controller {
 			$this->load->view('general/navbar');
 			$this->load->view('general/slider',$data);
 			$this->load->view('general/katagori', $data);
-			$this->load->view('general/slide_terlaris');
+			$this->load->view('general/slide_terlaris',$data);
 			$this->load->view('general/hotlist',$data);
 			$this->load->view('general/bottom_menu');
 			$this->load->view('general/footer');

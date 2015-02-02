@@ -191,6 +191,19 @@ Class m_produk extends CI_Model {
         }
     }
 
+    //menampilkan Produk terbaru
+    function show_terlaris(){
+        $sql = "SELECT tgl_upload_produk,id_produk,nama_produk,harga_produk,harga_grosir_produk,berat_produk,stok_produk,deskripsi_produk,img_produk,nama AS nama_penjual, penjual_id, pengunjung
+        FROM data_produk
+        inner join data_user on data_user.id_user = data_produk.penjual_id ORDER BY pengunjung DESC LIMIT 6 ";
+        $query = $this->db->query($sql);
+        if($query->num_rows>0){
+            return $query->result_array();
+        }else{
+            return array();
+        }
+    }
+
       // menampilkan produk dari id penjual
     function show_all_product_by_seller($id_penjual){
         $this->db->select('*');

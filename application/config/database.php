@@ -50,8 +50,8 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = '2015_alvinukmbantul';
+$db['default']['password'] = '123';
+$db['default']['database'] = 'db_toko_ukm';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -67,3 +67,18 @@ $db['default']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
+
+
+
+$db['anotherdb']['hostname'] = 'localhost'; // here you must change XXX with the IP where the second database is located
+$db['anotherdb']['username'] = 'root';
+$db['anotherdb']['password'] = '123';
+$db['anotherdb']['database'] = 'sms';
+$db['anotherdb']['dbdriver'] = 'mysql';
+$db['anotherdb']['dbprefix'] = '';
+$db['anotherdb']['pconnect'] = FALSE;
+$db['anotherdb']['db_debug'] = TRUE;
+$db['anotherdb']['cache_on'] = FALSE;
+$db['anotherdb']['cachedir'] = '';
+$db['anotherdb']['char_set'] = 'utf8';
+$db['anotherdb']['dbcollat'] = 'utf8_general_ci';

@@ -21,10 +21,10 @@
         <script src="js/jquery-1.10.1.min.js"></script>
         <script src="js/main.js"></script>-->
     <script src="<?php echo base_url(); ?>doc/themes/public/js/jquery.prettyPhoto.js"></script>
-    <script src="<?php echo base_url(); ?>doc/themes/public/js/main.js"></script>
-  <!--  <script src="<?php echo base_url(); ?>doc/themes/public/js/bootstrap.min.js"></script> -->
+ 
 <script src="<?php echo base_url(); ?>doc/themes/public/js/site.min.js"></script> 
-	
+    <script src="<?php echo base_url(); ?>doc/themes/public/js/main.js"></script>
+    
 <script>$('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'});
 
     $('#chart').popover({'html': 'true'});</script>

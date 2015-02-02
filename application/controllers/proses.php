@@ -7,7 +7,7 @@ class Proses extends CI_Controller {
 		$this->load->library(array('session', 'upload', 'user_agent','form_validation'));
 		$this->load->helper(array('form', 'url'));
         // memanggil model m_home
-		$this->load->model(array('m_produk','m_user','m_content'));
+		$this->load->model(array('m_produk','m_user','m_content','m_admin'));
 
 	}
 
