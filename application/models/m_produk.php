@@ -218,5 +218,19 @@ Class m_produk extends CI_Model {
 
 
 
+   function jml_konfirmasi()
+    {
+      $sql = "SELECT *
+      FROM konfirmasi_pembayaran where status = nocheck ";
+      $this->db->select('*');
+      $query = $this->db->get('konfirmasi_pembayaran');
+      return $query->num_rows();//menampilkan berupa angka
+
+
+    }  
+
+
+
+
 }
 ?>

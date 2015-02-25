@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="inputPassword3" class="col-md-4 control-label">Kabupaten / Kota</label>
+    <label for="inputProvinsi" class="col-md-4 control-label">Kabupaten / Kota</label>
     <div class="col-md-6">
         <!-- #kabupaten digunakan untuk menampilkan #kecamatan melalui ajax -->
         <select name="kabupaten" id="inputkabupaten" class="form-control">

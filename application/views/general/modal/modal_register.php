@@ -13,16 +13,16 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-md-4 control-label">Nama Lengkap</label>
                                 <div class="col-md-6">
-                                    <input name="username" type="text" class="form-control" id="" placeholder="Nama Lengkap">
+                                    <input name="nama" type="text" class="form-control" id="" placeholder="Nama Lengkap">
                                 </div>
-                                <label class="col-md-12 col-md-12 control-label text-danger"><?php echo form_error('username'); ?></label>
+                                <label class="col-md-12 col-md-12 control-label text-danger"><?php echo form_error('nama'); ?></label>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-md-4 control-label">Nama Panggilan</label>
                                 <div class="col-md-6">
-                                    <input name="nama" type="text" class="form-control" id="" placeholder="Nama Panggilan (max 10 Character)">
+                                    <input name="username" type="text" class="form-control" id="" placeholder="Nama Panggilan (max 10 Character)">
                                 </div>
-                                <label class="col-md-12 col-md-12 control-label text-danger"><?php echo form_error('nama'); ?></label>
+                                <label class="col-md-12 col-md-12 control-label text-danger"><?php echo form_error('username'); ?></label>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-md-4 control-label">Email</label>
@@ -53,7 +53,7 @@
                                 <label class="col-md-12 control-label text-danger"><?php echo form_error('telepon'); ?></label>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-md-4 control-label">Provinsi</label>
+                                <label for="inputProvinsi" class="col-md-4 control-label">Provinsi</label>
                                 <div class="col-md-6">
                                     <select id="provinsi" name="provinsi" class="form-control">
                                         <option value="" selected="1">Pilih Provinsi</option>
@@ -75,7 +75,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-md-4 control-label">Alamat</label>
                                 <div class="col-md-6">
-                                    <input name="alamat" type="text" class="form-control" id="inputEmail3" placeholder="Alamat">
+                                    <textarea name="alamat" type="text" class="form-control" id="inputEmail3" placeholder="Alamat"></textarea>
                                 </div>
                                 <label class="col-md-12 control-label text-danger"><?php echo form_error('alamat'); ?></label>
                             </div>

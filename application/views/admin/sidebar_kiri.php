@@ -25,14 +25,98 @@
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
-                        <li class="active">
-                            <a href="<?echo  base_url();  ?>">
+                        <li class=" <?php if ($this->uri->segment(2)==='home') {
+                                            echo 'active';
+
+                                            }else if (!empty($this->uri->segment(2))){
+                                                echo '';
+                                           
+                                            } else {
+                                               echo 'active'; 
+                                            }
+                                             ?>
+                                           <?php ?>">
+                            <a href="<?php echo base_url(); ?>admin/home">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
+                        <li class=" <?php if ($this->uri->segment(2)==='sms') {
+                                            echo 'active';                                           
+                                            } else {
+                                               echo ''; 
+                                            }
+                                             ?>">
+                            <a href="<?php echo base_url(); ?>admin/sms">
+                                <i class="fa fa-envelope"></i> <span>SMS</span> <small class="badge pull-right bg-green">new</small>
+                            </a>
+                        </li>
+                        <li class=" <?php if ($this->uri->segment(2)==='list_penjual') {
+                                            echo 'active';                                           
+                                            } else {
+                                               echo ''; 
+                                            }
+                                             ?>">
+                            <a href="<?php echo base_url(); ?>admin/list_penjual">
+                                <i class="fa fa-user"></i> <span>Penjual</span> <small class="badge pull-right bg-green">new</small>
+                            </a>
+                        </li>
+                        <li  class=" <?php if ($this->uri->segment(2)==='list_transaksi') {
+                                            echo 'active';                                           
+                                            } else {
+                                               echo ''; 
+                                            }
+                                             ?>">
+                            <a href="<?php echo base_url(); ?>admin/list_transaksi">
+                                <i class="fa fa-bar-chart-o"></i> <span>Transaksi</span> <small class="badge pull-right bg-green">new</small>
+                            </a>
+                        </li>
+                       
+                        <li class="treeview <?php if ($this->uri->segment(2)==='pengaturan_bank' || $this->uri->segment(2)==='pengaturan_admin'|| $this->uri->segment(2)==='format_sms' || $this->uri->segment(2)==='content_page' ) {
+                                            echo 'active';                                           
+                                            } else {
+                                               echo ''; 
+                                            }
+                                             ?>">
+                            <a href="#">
+                                <i class="fa fa-laptop"></i>
+                                <span>Pengaturan</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class=" <?php if ($this->uri->segment(2)==='pengaturan_admin') {
+                                            echo 'active';                                           
+                                            } else {
+                                               echo ''; 
+                                            }
+                                             ?>"><a href="<?php echo base_url(); ?>admin/pengaturan_admin"><i class="fa fa-angle-double-right"></i> Akun Admin</a></li>
+                               
+                                <li class=" <?php if ($this->uri->segment(2)==='pengaturan_bank') {
+                                            echo 'active';                                           
+                                            } else {
+                                               echo ''; 
+                                            }
+                                             ?>">
+                                             <a href="<?php echo base_url(); ?>admin/pengaturan_bank"><i class="fa fa-angle-double-right"></i> Bank</a>
+                                </li>
+
+                                <li class=" <?php if ($this->uri->segment(2)==='format_sms') {
+                                            echo 'active';                                           
+                                            } else {
+                                               echo ''; 
+                                            }
+                                             ?>"><a href="<?php echo base_url(); ?>admin/format_sms"><i class="fa fa-angle-double-right"></i> Format SMS</a></li>
+                                
+                                <li class=" <?php if ($this->uri->segment(2)==='content_page') {
+                                            echo 'active';                                           
+                                            } else {
+                                               echo ''; 
+                                            }
+                                             ?>"><a href="<?php echo base_url(); ?>admin/content_page"><i class="fa fa-angle-double-right"></i> Content Page</a></li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="pages/widgets.html">
-                                <i class="fa fa-envelope"></i> <span>SMS</span> <small class="badge pull-right bg-green">new</small>
+                                <i class="fa fa-edit"></i> <span>Testimonial</span> <small class="badge pull-right bg-green">new</small>
                             </a>
                         </li>
                       <!--  <li class="treeview">

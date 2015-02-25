@@ -8,7 +8,7 @@
  			<div class="small-box bg-aqua">
  				<div class="inner">
  					<h3>
- 						150
+ 						<?php echo $jml_inbox; ?>
  					</h3>
  					<p>
  						Pesanan Baru
@@ -27,7 +27,7 @@
  			<div class="small-box bg-green">
  				<div class="inner">
  					<h3>
- 						53<!-- <sup style="font-size: 20px">%</sup> -->
+ 						<?php echo $jml_konfirmasi; ?><!-- <sup style="font-size: 20px">%</sup> -->
  					</h3>
  					<p>
  						Konfirmasi Pembayaran

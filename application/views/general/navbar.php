@@ -47,7 +47,7 @@
                     <li class="btnav">
                             <a class="btnav dropdown-toggle navbar-btn" href="#" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span><?php echo $this->session->userdata('login_user')['nama'];?> <i class="caret"></i></span>
+                                <span><?php echo $this->session->userdata('login_user')['username_user'];?> <i class="caret"></i></span>
                             </a>
                             <ul style="width: 280px;" class="dropdown-menu">
                                 <!-- User image -->
@@ -86,7 +86,7 @@
                     <?php  } else { ?>
                     <li>
                         <div class="btnav">
-                            <a href="#myModal" role="button" class="btn btn-large btn-success navbar-btn" data-toggle="modal">User Login</a>   
+                            <a href="#myModal" role="button" class="btn btn-large btn-success navbar-btn" data-toggle="modal">Login / Daftar</a>   
                               
                             
                            <!--  <a style="color: white;" class="btn btn-large btn-link navbar-btn" href="#"><i class=" icon-shopping-cart"></i></a>

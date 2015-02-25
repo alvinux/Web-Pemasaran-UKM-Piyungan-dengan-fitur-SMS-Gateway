@@ -1,12 +1,74 @@
+  <?php if ($this->uri->segment(2)==='format_sms') { ?>
 
+       <!-- jQuery 2.0.2 -->
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- DATA TABES SCRIPT -->
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+        <!-- AdminLTE App -->
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/AdminLTE/app.js" type="text/javascript"></script>
+        
+         <script>$('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'});
+
+            $('#chart').popover({'html': 'true'});</script>
+        <!-- page script -->
+        <script type="text/javascript">
+            $(function() {
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+        </script>
+
+
+
+  <?php } else if ($this->uri->segment(2)==='content_page') { ?>
+
+
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>doc/themes/public/js/jquery.prettyPhoto.js"></script>
+        
+        <!-- AdminLTE App -->
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/AdminLTE/app.js" type="text/javascript"></script>
+        
+         <script>$('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'});
+
+            $('#chart').popover({'html': 'true'});</script>
+        <!-- page script -->
+        <script type="text/javascript">
+            $(function() {
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+        </script>
+
+
+  <?php } else { ?>
         <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/jquery.min.js"></script>
         <!-- jQuery UI 1.10.3 -->
         <script src="<?php echo base_url(); ?>doc/themes/admin/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
         <!-- Bootstrap -->
         <script src="<?php echo base_url(); ?>doc/themes/admin/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- Morris.js charts -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/raphael-min.js"></script>
         <script src="<?php echo base_url(); ?>doc/themes/admin/js/plugins/morris/morris.min.js" type="text/javascript"></script>
         <!-- Sparkline -->
         <script src="<?php echo base_url(); ?>doc/themes/admin/js/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
@@ -32,6 +94,9 @@
 
         <!-- AdminLTE for demo purposes -->
         <script src="<?php echo base_url(); ?>doc/themes/admin/js/AdminLTE/demo.js" type="text/javascript"></script>
+        <script>$('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'});
 
+            $('#chart').popover({'html': 'true'});</script>
+<?php }  ?>
     </body>
 </html>

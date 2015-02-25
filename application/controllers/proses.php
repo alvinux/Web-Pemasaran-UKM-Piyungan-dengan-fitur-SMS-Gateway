@@ -14,14 +14,15 @@ class Proses extends CI_Controller {
 
 
 	public function proses_daftar_user() {
+
 		//is_unique[user.email]=user nama tabel, email nama kolom
 		//Nama=pesan validasi, nama=nama field form
-		$this->form_validation->set_rules('nama', 'Nama', 'trim|required|max_length[10]|xss_clean');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('nama', 'Nama', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('username', 'Nama Panggilan', 'trim|required|max_length[10]|xss_clean');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|is_unique[data_user.email]|max_length[50]|xss_clean');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|md5|max_length[50]|xss_clean');
 		$this->form_validation->set_rules('passwordconf', 'Password', 'trim|required|matches[password]|md5|xss_clean');
-		$this->form_validation->set_rules('telepon', 'Telepon', 'trim|required|numeric|is_unique[data_user.telpon]|max_length[15]|xss_clean');
+		$this->form_validation->set_rules('telepon', 'Telpon', 'trim|required|numeric|is_unique[data_user.telpon]|max_length[15]|xss_clean');
 		$this->form_validation->set_rules('provinsi', 'Provinsi', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('kabupaten', 'Kabupaten', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('kecamatan', 'Kecamatan', 'trim|required|xss_clean');
@@ -32,40 +33,40 @@ class Proses extends CI_Controller {
 		if($this->form_validation->run() == FALSE) {
 			//agar tetap di halaman daftar dan menampilkan validasi error. jika menggunakan redirect validasi tidak muncul.
 
-		//untuk menampilkan kategori di form cari
-			
+			if ($this->session->userdata('login_user')) {
+				redirect('home');
+				} else {
 			//untuk menampilkan option provinsi
-			$data['provinsi'] = $this->m_content->provinsi();
+				$data['provinsi'] = $this->m_content->provinsi();
 
-			$data['title']= 'Daftar User';
+				$data['title']= 'Daftar User';
 
-			//load View
-			$this->load->view('base/head', $data);
+				//load View
+				$this->load->view('base/head', $data);
 
-			$this->load->view('general/navbar');
-			$this->load->view('general/head_katagori');
-			$this->load->view('general/daftar',$data);
+				$this->load->view('general/navbar');
+				$this->load->view('general/head_katagori');
+				$this->load->view('general/daftar',$data);
 
-			$this->load->view('general/bottom_menu');
-			$this->load->view('general/footer');
-			$this->load->view('general/modal/modal_login');
-			$this->load->view('general/modal/modal_register');	
-			$this->load->view('general/modal/modal_ganti_password');
-			
-			$this->load->view('base/tail');
-
+				$this->load->view('general/bottom_menu');
+				$this->load->view('general/footer');
+				$this->load->view('general/modal/modal_login');
+				$this->load->view('general/modal/modal_register');	
+				$this->load->view('general/modal/modal_ganti_password');
+				
+				$this->load->view('base/tail');
+			}
 
 
 		} else {
 			//memanggil model m_beranda funsi daftar
-			$this->m_content->daftar();
+			$this->m_user->daftar();
 			echo '<script>';
 			echo "alert('Berhasil Melakukan Pendaftaran');";
 			echo "window.location='../home'";
 			echo '</script>';
 		}
 	}
-
 
 
 	public function proses_login_user()
@@ -107,6 +108,7 @@ class Proses extends CI_Controller {
 			foreach ($result as $row) {
 				$sess_array = array(
 					'id_user' => $row->id_user,
+					'username_user' => $row->username_user,
 					'nama' => $row->nama,
 					'email' => $row->email,
 					'img_user' => $row->img_user,
@@ -127,8 +129,8 @@ class Proses extends CI_Controller {
 	}
 
 
+//////////////////////////ADMIN//////////////////
 //----------------------ADMIN-----------------
-
 
 	public function proses_login_admin()
 	{

@@ -22,29 +22,40 @@ Class M_admin extends CI_Model {
 		}
 	}
 
-	 // function biodata() {
-  //       $id_user = $this->session->userdata['login_user']['id_user'];
-  //       $sql = "SELECT * FROM data_user 
-  //       -- INNER JOIN kecamatan ON kecamatan.id_kecamatan = user.id_kecamatan
-  //       -- INNER JOIN kab_kota ON kab_kota.id_kab_kota = user.id_kab_kota
-  //       -- INNER JOIN provinsi ON provinsi.id_provinsi = user.id_provinsi
-  //       WHERE id_user =  ?";
+	 function biodata_admin() {
+        $id_admin = $this->session->userdata['login_admin']['id_admin'];
+        $sql = "SELECT * FROM data_admin 
+    
+        WHERE id_admin =  ?";
+        
+        $query = $this->db->query($sql,$id_admin);
+        if($query->num_rows>0){
+            return $query->row_array();
+        }else{
+            return false;
+        }
+    }
 
-  //       // $sql = "SELECT data_user.id_user AS 'id_user', data_user.nama_user AS 'nama',data_user.email AS 'email', data_user.telepon AS 'telepon',user.alamat AS 'alamat',user.kode_pos AS 'kode_pos', user.foto AS 'foto',
-  //       // kecamatan.id_kecamatan AS 'id_kecamatan', kecamatan.kecamatan AS 'kecamatan', kab_kota.kab_kota AS 'kabupaten', kab_kota.id_kab_kota AS 'id_kabupaten', provinsi.provinsi AS 'provinsi'
-  //       // FROM user 
-  //       // INNER JOIN kecamatan ON kecamatan.id_kecamatan = user.id_kecamatan
-  //       // INNER JOIN kab_kota ON kab_kota.id_kab_kota = user.id_kab_kota
-  //       // INNER JOIN provinsi ON provinsi.id_provinsi = user.id_provinsi
-  //       // WHERE user.id_user =  ?";
+    function ubah_data_admin() {
+    	$id_admin = $_POST['id_admin'];
+    	$this->email = $this->input->post('email');
+    	$this->username_admin = $this->input->post('username_admin');
+    	$this->nama_admin = $this->input->post('nama_admin');
+    	$this->telpon = $this->input->post('telpon');
+    	$this->alamat = $this->input->post('alamat');
+    	// $this->password = $this->input->post('password');
+    	$this->db->where('id_admin', $id_admin);
+    	$this->db->update('data_admin', $this);
+    }
 
-  //       $query = $this->db->query($sql,$id_user);
-  //       if($query->num_rows>0){
-  //           return $query->row_array();
-  //       }else{
-  //           return false;
-  //       }
-  //   }
+   function ubah_pass_admin() {
+    	$id_admin = $_POST['id_admin'];
+    	$this->password = $this->input->post('password');
+    	
+    	// $this->password = $this->input->post('password');
+    	$this->db->where('id_admin', $id_admin);
+    	$this->db->update('data_admin', $this);
+    }
 
 
 

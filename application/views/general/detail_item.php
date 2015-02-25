@@ -1,12 +1,31 @@
-<section id="detail-item" class="container">
-	<div class="row">
 	<?php if (!empty($detail_produk)) { ?>
 		<?php $detail_produk = array($detail_produk); ?>
 		<?php foreach ($detail_produk as $row) { ?>
+<section id="title" class="emerald">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+              <h1><?php echo $row['nama_produk']; ?></h1>
+           
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+            </div>
+            <div class="col-sm-6">
+                <ul class="breadcrumb pull-right">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Katagori</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="detail-item" class="container">
+	<div class="row">
 		<aside class="col-sm-3 col-sm-push-9">
 			<div class="widget detail row">
 
-				<div class="panel panel-default">
+				<div class="panel panel-danger">
 				      <!-- Default panel contents -->
 				      <div class="panel-heading">Data Penjual</div>
 
@@ -14,18 +33,18 @@
 				      <table class="table">
 				        <thead>
 				          <tr>
-				            <th>Nama </th>
-				            <th>: <?php echo $row['nama']; ?></th>
+				            <th><span class="glyphicon glyphicon-user"></span></th>
+				            <th><?php echo $row['nama']; ?></th>
 				          </tr>
 				        </thead>
 				        <tbody>
 				          <tr>
-				            <td>Alamat</td>
-				            <td>: <?php echo $row['alamat']; ?></td>
+				            <td><span class="glyphicon glyphicon-map-marker"></span></td>
+				            <td><?php echo $row['alamat']; ?></td>
 				          </tr>
 				          <tr>
-				            <td>No. Tlp</td>
-				            <td>: <?php echo  $row['telpon']; ?></td>
+				            <td><span class="glyphicon glyphicon-phone-alt"></span></td>
+				            <td><?php echo  $row['telpon']; ?></td>
 				          </tr>
 				          
 				        </tbody>

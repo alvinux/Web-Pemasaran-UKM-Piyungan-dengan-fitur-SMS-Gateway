@@ -21,9 +21,16 @@
 				<h3 class="">Ubah Biodata Diri</h3>
 				<hr>
 				<div class="form-group"><!----nama---->
-					<label style="text-align: left; " class="col-sm-4 control-label" for="nama">Nama</label>
+					<label style="text-align: left; " class="col-sm-4 control-label" for="nama">Nama Lengkap</label>
 					<div class="col-sm-8">
 						<input class="form-control" id="formreg" value="<?php echo $row['nama']; ?> " type="text" >
+					</div>
+				</div><!--/nama------>
+
+				<div class="form-group"><!----nama---->
+					<label style="text-align: left; " class="col-sm-4 control-label" for="nama">Nama Panggilan</label>
+					<div class="col-sm-8">
+						<input class="form-control" id="formreg" value="<?php echo $row['username_user']; ?> " type="text" >
 					</div>
 				</div><!--/nama------>
 				<div class="form-group"><!---taggal lahir-->
@@ -63,87 +70,30 @@
 				<div class="form-group"><!---Alamat------------>
 					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="alamat">Alamat</label>
 					<div class="col-sm-8">
-						<textarea class="form-control" rows="3" placeholder="<?php echo $row['alamat']; ?>"></textarea>
+						<textarea class="form-control" rows="3" placeholder="<?php echo $row['alamat']; ?>"><?php echo $row['alamat']; ?></textarea>
 					</div>
 				</div><!------/Alamat-------------------------->
 				<!---Povinsi-->
+								<!---Povinsi-->
 				<div class="form-group">
-					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="provinsi">Provinsi</label>
+					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="hp">Provinsi</label>
 					<div class="col-sm-8">
-						<div class="">
-							<select name="selecter_basic" class="selecter_1" <?php if ($row['status'] === 'penjual') { echo 'disabled="disabled"'; } else { echo ''; }//start if stok=0 ?>>
-								<optgroup label="Group One">
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
-								</optgroup>
-								<optgroup label="Group One">
-									<option value="4">Four</option>
-									<option value="5">Five</option>
-									<option value="6">Six</option>
-									<option value="7">Seven</option>
-								</optgroup>
-								<optgroup label="Group Three">
-									<option value="8">Eight</option>
-									<option value="9">Nine</option>
-									<option value="10">Ten</option>
-								</optgroup>
-							</select>
-						</div>
+						<select id="provinsi" name="provinsi" class="form-control" <?php if ($row['status'] === 'penjual') { echo 'disabled="disabled"'; } else { echo ''; }//start if stok=0 ?>>
+							<option value="" selected="1">Pilih Provinsi</option>
+							<?php foreach ($provinsi as $rowi) { ?>
+							<option value="<?php echo $rowi->id_provinsi; ?>"><?php echo $rowi->provinsi; ?></option>
+							<?php } ?>
+						</select>
 					</div>
-				</div><!--/Provinsi-->
-				<!---Kabupaten/kota-->
-				<div class="form-group">
-					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="kota">Kabupaten / Kota</label>
-					<div class="col-sm-8">
-						<div class="">
-							<select name="selecter_basic" class="selecter_1">
-								<optgroup label="Group One">
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
-								</optgroup>
-								<optgroup label="Group One">
-									<option value="4">Four</option>
-									<option value="5">Five</option>
-									<option value="6">Six</option>
-									<option value="7">Seven</option>
-								</optgroup>
-								<optgroup label="Group Three">
-									<option value="8">Eight</option>
-									<option value="9">Nine</option>
-									<option value="10">Ten</option>
-								</optgroup>
-							</select>
-						</div>
-					</div>
-				</div><!--/Kabupaten / Kota-->
-				<!---Kecamatan-->
-				<div class="form-group">
-					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="kota">Kecamatan</label>
-					<div class="col-sm-8">
-						<div class="">
-							<select name="selecter_basic" class="selecter_1">
-								<optgroup label="Group One">
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
-								</optgroup>
-								<optgroup label="Group One">
-									<option value="4">Four</option>
-									<option value="5">Five</option>
-									<option value="6">Six</option>
-									<option value="7">Seven</option>
-								</optgroup>
-								<optgroup label="Group Three">
-									<option value="8">Eight</option>
-									<option value="9">Nine</option>
-									<option value="10">Ten</option>
-								</optgroup>
-							</select>
-						</div>
-					</div>
-				</div><!--/Kecamatan-->
+					<label class="col-md-12 control-label text-danger"><?php echo form_error('provinsi'); ?></label>
+				</div>
+
+				<div id="kabupaten">
+
+				</div>
+				<div id="kecamatan">
+
+				</div>
 				<div class="form-group"><!---Kodepos------------------------>
 					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="kodepos">Kode Pos</label>
 					<div class="col-sm-8">

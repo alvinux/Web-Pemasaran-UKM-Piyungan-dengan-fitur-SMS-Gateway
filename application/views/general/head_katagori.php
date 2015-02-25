@@ -8,7 +8,7 @@
                     <h1><?php echo (str_replace('_', ' ', $this->uri->segment(3))) ; ?></h1>
                 <?php } else {  ?>
                     <h1><?php echo (str_replace('_', ' ', (ucwords($this->uri->segment(2))))) ; ?></h1>
-             <?php   }  ?>
+                <?php   }  ?>
                 
                 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
             </div>
