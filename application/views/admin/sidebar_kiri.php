@@ -78,7 +78,7 @@
                                             }
                                              ?>">
                             <a href="#">
-                                <i class="fa fa-laptop"></i>
+                                <i class="fa fa-wrench"></i>
                                 <span>Pengaturan</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
@@ -114,8 +114,13 @@
                                              ?>"><a href="<?php echo base_url(); ?>admin/content_page"><i class="fa fa-angle-double-right"></i> Content Page</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="pages/widgets.html">
+                        <li class=" <?php if ($this->uri->segment(2)==='testimonial') {
+                                            echo 'active';                                           
+                                            } else {
+                                               echo ''; 
+                                            }
+                                             ?>">
+                            <a href="<?php echo base_url(); ?>admin/testimonial">
                                 <i class="fa fa-edit"></i> <span>Testimonial</span> <small class="badge pull-right bg-green">new</small>
                             </a>
                         </li>

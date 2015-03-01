@@ -75,7 +75,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-md-4 control-label">Alamat</label>
                                 <div class="col-md-6">
-                                    <input name="alamat" type="text" class="form-control" id="inputEmail3" placeholder="Alamat">
+                                    <textarea name="alamat" type="text" class="form-control" id="inputEmail3" placeholder="Alamat"></textarea>
                                 </div>
                                 <label class="col-md-12 control-label text-danger"><?php echo form_error('alamat'); ?></label>
                             </div>

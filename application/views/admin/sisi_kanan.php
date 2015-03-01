@@ -30,6 +30,10 @@
                         $this->load->view('admin/peng_format_sms');
                     }  else if ($this->uri->segment(2)==='content_page') {
                         $this->load->view('admin/peng_contentpage');
+                        $this->load->view('admin/modal/modal_new_berita');
+                    } else if ($this->uri->segment(2)==='testimonial') {
+                        $this->load->view('admin/testimonial');
+ 
                     } else {
                         $this->load->view('admin/dashboard');
                     }

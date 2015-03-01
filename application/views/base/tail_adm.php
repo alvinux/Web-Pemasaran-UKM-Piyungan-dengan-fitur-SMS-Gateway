@@ -1,4 +1,4 @@
-  <?php if ($this->uri->segment(2)==='format_sms') { ?>
+  <?php if ($this->uri->segment(2)==='format_sms' || $this->uri->segment(2)==='testimonial') { ?>
 
        <!-- jQuery 2.0.2 -->
         <script src="<?php echo base_url(); ?>doc/themes/admin/js/jquery.min.js"></script>

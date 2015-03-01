@@ -29,7 +29,7 @@ class Admin extends CI_Controller {
 public function index()
 	{
 		if ($this->session->userdata('login_admin')) {
-			redirect($this->agent->referrer());
+			redirect('admin/home');
 		} else {
 		//load View	
 		$this->load->view('admin/login');
@@ -222,6 +222,32 @@ public function home()
 	}
 
 	public function content_page()
+	{
+		if ($this->session->userdata('login_admin')) {
+			// $config['base_url'] = site_url('home/index');
+
+			//load View
+
+			// $data['jml_inbox'] = $this->m_sms->jml_inbox();
+			// $data['jml_konfirmasi'] = $this->m_produk->jml_konfirmasi();
+			
+			$this->load->view('base/head_adm');
+			
+			
+			$this->load->view('admin/header');
+			$this->load->view('admin/sidebar_kiri');
+			$this->load->view('admin/sisi_kanan');
+		
+			
+			
+			$this->load->view('base/tail_adm');
+	
+		} else {
+			redirect('admin');
+		}
+	}
+
+	public function testimonial()
 	{
 		if ($this->session->userdata('login_admin')) {
 			// $config['base_url'] = site_url('home/index');

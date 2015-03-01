@@ -72,7 +72,16 @@
                                         <td ><a href="#" data-toggle="modal" data-target="#transaksi-modal">Status</a></td>
                                         <td class="time">Tanggal:Tahun:Jam</td>
                                     </tr>
-                                    <tr class="unread">
+                                    <tr >
+                                        <td class="small-col"><input type="checkbox" /></td>
+                                        <td class="small-col"><i class="fa fa-star"></i></td>
+                                        <td ><a href="#detail-transaksi" data-toggle="modal" data-target="#transaksi-modal">Nama User</a></td>
+                                        <td ><a href="#" data-toggle="modal" data-target="#transaksi-modal">Kode Invoice</a></td>
+                                        <td ><a href="#" data-toggle="modal" data-target="#transaksi-modal">Jumlah</a></td>
+                                        <td ><a href="#" data-toggle="modal" data-target="#transaksi-modal">Status</a></td>
+                                        <td class="time">Tanggal:Tahun:Jam</td>
+                                    </tr>
+                                    <tr >
                                         <td class="small-col"><input type="checkbox" /></td>
                                         <td class="small-col"><i class="fa fa-star"></i></td>
                                         <td ><a href="#detail-transaksi" data-toggle="modal" data-target="#transaksi-modal">Nama User</a></td>
@@ -90,16 +99,7 @@
                                         <td ><a href="#" data-toggle="modal" data-target="#transaksi-modal">Status</a></td>
                                         <td class="time">Tanggal:Tahun:Jam</td>
                                     </tr>
-                                    <tr class="unread">
-                                        <td class="small-col"><input type="checkbox" /></td>
-                                        <td class="small-col"><i class="fa fa-star"></i></td>
-                                        <td ><a href="#detail-transaksi" data-toggle="modal" data-target="#transaksi-modal">Nama User</a></td>
-                                        <td ><a href="#" data-toggle="modal" data-target="#transaksi-modal">Kode Invoice</a></td>
-                                        <td ><a href="#" data-toggle="modal" data-target="#transaksi-modal">Jumlah</a></td>
-                                        <td ><a href="#" data-toggle="modal" data-target="#transaksi-modal">Status</a></td>
-                                        <td class="time">Tanggal:Tahun:Jam</td>
-                                    </tr>
-                                    <tr class="unread">
+                                    <tr >
                                         <td class="small-col"><input type="checkbox" /></td>
                                         <td class="small-col"><i class="fa fa-star"></i></td>
                                         <td ><a href="#detail-transaksi" data-toggle="modal" data-target="#transaksi-modal">Nama User</a></td>

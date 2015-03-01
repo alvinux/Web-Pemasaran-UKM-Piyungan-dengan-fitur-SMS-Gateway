@@ -160,35 +160,35 @@ class Home extends CI_Controller {
 			redirect('home');
 		}
 	}	
-	// public function detail_penjual()
-	// {	
-	// 	if ($this->session->userdata('login_user')) {
-	// 		$data['provinsi'] = $this->m_content->provinsi();
-	// 		$id_penjual = $this->uri->segment(3);
-	// 		//mengambil session proses_masuk dan menyimpan session email
-	// 		$session_data = $this->session->userdata('login_user');
-	// 		$data['title']= 'Profile';
-	// 		$data['data_penjual'] = $this->m_user->data_penjual($id_penjual);
-	// 		$data['produk_penjual'] = $this->m_produk->show_all_product_by_seller($id_penjual);
+	public function detail_penjual()
+	{	
+		if ($this->session->userdata('login_user')) {
+			$data['provinsi'] = $this->m_content->provinsi();
+			$id_penjual = $this->uri->segment(3);
+			//mengambil session proses_masuk dan menyimpan session email
+			$session_data = $this->session->userdata('login_user');
+			$data['title']= 'Profile';
+			$data['data_penjual'] = $this->m_user->data_penjual($id_penjual);
+			$data['produk_penjual'] = $this->m_produk->show_all_product_by_seller($id_penjual);
 
-	// 		//load View
-	// 		$this->load->view('base/head', $data);
+			//load View
+			$this->load->view('base/head', $data);
 
-	// 		$this->load->view('general/navbar');
-	// 		$this->load->view('general/head_katagori');
-	// 		$this->load->view('general/detail_penjual',$data);
+			$this->load->view('general/navbar');
+			$this->load->view('general/head_katagori');
+			$this->load->view('general/detail_penjual',$data);
 
-	// 		$this->load->view('general/bottom_menu');
-	// 		$this->load->view('general/footer');
-	// 		$this->load->view('general/modal/modal_login');
-	// 		$this->load->view('general/modal/modal_register',$data);	
-	// 		$this->load->view('general/modal/modal_ganti_password');
+			$this->load->view('general/bottom_menu');
+			$this->load->view('general/footer');
+			$this->load->view('general/modal/modal_login');
+			$this->load->view('general/modal/modal_register',$data);	
+			$this->load->view('general/modal/modal_ganti_password');
 			
-	// 		$this->load->view('base/tail');
-	// 	} else {
-	// 		redirect('home');
-	// 	}
-	// }
+			$this->load->view('base/tail');
+		} else {
+			redirect('home');
+		}
+	}
 	
 	public function keranjang()
 	{
