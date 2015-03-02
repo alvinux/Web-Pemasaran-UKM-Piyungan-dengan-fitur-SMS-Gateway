@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2015 at 06:00 AM
+-- Generation Time: Mar 02, 2015 at 04:54 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `data_admin` (
   `email` varchar(50) NOT NULL,
   `alamat` text NOT NULL,
   `tgl_lahir` varchar(50) NOT NULL,
+  `telpon` int(20) NOT NULL,
   PRIMARY KEY (`id_admin`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
@@ -61,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `data_admin` (
 -- Dumping data for table `data_admin`
 --
 
-INSERT INTO `data_admin` (`id_admin`, `username_admin`, `pass_admin`, `nama_admin`, `stts`, `lvl`, `email`, `alamat`, `tgl_lahir`) VALUES
-(8, 'admin', '202cb962ac59075b964b07152d234b70', 'Alvin Indra Cahya', '1', '1', 'admin@admin.com', 'Jalan Bintara 17 Rt.08/02\r\nBintara Jaya, USA', '2015-01-25');
+INSERT INTO `data_admin` (`id_admin`, `username_admin`, `pass_admin`, `nama_admin`, `stts`, `lvl`, `email`, `alamat`, `tgl_lahir`, `telpon`) VALUES
+(8, 'admin', '202cb962ac59075b964b07152d234b70', 'Alvin Indra Cahya', '1', '1', 'admin@admin.com', 'Jalan Bintara 17 \r\nPlanet Bekasi', '2015-01-25', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -111,6 +112,7 @@ CREATE TABLE IF NOT EXISTS `data_produk` (
   `stok_produk` varchar(6) NOT NULL,
   `deskripsi_produk` text NOT NULL,
   `pengunjung` bigint(20) NOT NULL,
+  `pembeli` bigint(20) NOT NULL,
   `tgl_upload_produk` datetime NOT NULL,
   `katagori_id` int(11) NOT NULL,
   `jenis_produk_id` int(11) NOT NULL,
@@ -122,11 +124,11 @@ CREATE TABLE IF NOT EXISTS `data_produk` (
 -- Dumping data for table `data_produk`
 --
 
-INSERT INTO `data_produk` (`id_produk`, `nama_produk`, `harga_produk`, `img_produk`, `harga_grosir_produk`, `berat_produk`, `stok_produk`, `deskripsi_produk`, `pengunjung`, `tgl_upload_produk`, `katagori_id`, `jenis_produk_id`, `penjual_id`) VALUES
-(1, 'Keripik Kentang', '20000', 'thumbnail-1.jpg', 300, 20, '300', 'Ini keripik Kentang Asli Piyungan', 3, '2015-11-18 00:00:00', 1, 1, 2),
-(2, 'Keripik Singkong', '21000', 'keripiksingkong.jpg', 0, 0, '0', '', 0, '2014-11-30 00:00:00', 1, 2, 2),
-(3, 'Keripik Pisang', '22000', 'thumbnail-1.jpg', 0, 0, '0', '', 0, '2015-11-30 01:00:00', 0, 0, 2),
-(7, 'Baju Bayi', '999999', 'thumbnail-1.jpg', 999, 9, '99', 'ini sde', 2, '2015-11-30 00:00:00', 9, 0, 2);
+INSERT INTO `data_produk` (`id_produk`, `nama_produk`, `harga_produk`, `img_produk`, `harga_grosir_produk`, `berat_produk`, `stok_produk`, `deskripsi_produk`, `pengunjung`, `pembeli`, `tgl_upload_produk`, `katagori_id`, `jenis_produk_id`, `penjual_id`) VALUES
+(1, 'Keripik Kentang', '20000', 'thumbnail-1.jpg', 300, 20, '300', 'Ini keripik Kentang Asli Piyungan', 3, 0, '2015-11-18 00:00:00', 1, 1, 2),
+(2, 'Keripik Singkong', '21000', 'keripiksingkong.jpg', 0, 0, '0', '', 0, 0, '2014-11-30 00:00:00', 1, 2, 2),
+(3, 'Keripik Pisang', '22000', 'thumbnail-1.jpg', 0, 0, '0', '', 0, 0, '2015-11-30 01:00:00', 0, 0, 2),
+(7, 'Baju Bayi', '999999', 'thumbnail-1.jpg', 999, 9, '99', 'ini sde', 2, 0, '2015-11-30 00:00:00', 9, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -175,17 +177,18 @@ CREATE TABLE IF NOT EXISTS `data_user` (
   `kode_aktivasi` varchar(200) NOT NULL,
   `tgl_transaksi` varchar(30) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `data_user`
 --
 
 INSERT INTO `data_user` (`id_user`, `username_user`, `pass_user`, `nama`, `email`, `alamat`, `img_user`, `telpon`, `id_provinsi`, `id_kota`, `id_kecamatan`, `kode_pos`, `tgl_daftar`, `status`, `kode_aktivasi`, `tgl_transaksi`) VALUES
-(1, 'user', '202cb962ac59075b964b07152d234b70', 'User Bin User', 'user@user.com', 'dimana', 'avatar2.png', '0000000000', 0, 0, 0, 'asd', 'asd', 'pembeli', '', ''),
+(1, 'user   ', '202cb962ac59075b964b07152d234b70', 'User Bin', 'user@user.com', 'dimana', 'avatar2.png', '0000000000   ', 17, 276, 5613, 'asd', 'asd', 'pembeli', '', ''),
 (2, 'penjual', '202cb962ac59075b964b07152d234b70', 'Penjual Bin Penjual', 'penjual@penjual.com', 'Jalan,Ray Bintara 17 \r\nPerumahan Sumarecon Bekasi', 'avatar2.png', '080382040234', 0, 0, 0, '', '', 'penjual', '', ''),
 (4, 'Joni Iskandar Muda Merdeka HInggga kini', 'ee4c47393138f1fec6d706a1b9fd4c76', 'jnahnud', 'jnahnud@yahoo.com', 'asdasd', '', '00909090909', 17, 272, 5580, '123123', '2015-01-27 19:40:46', 'pembeli', '', ''),
-(5, 'Alvin Indra Cahya', 'ee4c47393138f1fec6d706a1b9fd4c76', 'Alvin', 'alvin.i@students.amikom.ac.id', 'Jl.Bintara 17 RT.08', 'default.jpg', '085717617053', 13, 185, 637, '17136', '2015-01-27 19:47:03', 'pembeli', '', '');
+(5, 'Alvin Indra Cahya', 'ee4c47393138f1fec6d706a1b9fd4c76', 'Alvin', 'alvin.i@students.amikom.ac.id', 'Jl.Bintara 17 RT.08', 'default.jpg', '085717617053', 13, 185, 637, '17136', '2015-01-27 19:47:03', 'pembeli', '', ''),
+(6, 'Juki', 'e10adc3949ba59abbe56e057f20f883e', 'Jukipli', 'juki@juki.com', 'Bekasi', 'default.jpg', '090909090', 1, 5, 2256, '1111', '2015-02-22 22:21:53', 'pembeli', '', '');
 
 -- --------------------------------------------------------
 
@@ -7311,6 +7314,33 @@ INSERT INTO `kecamatan` (`id_kecamatan`, `kecamatan`, `kab_kota_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `konfirmasi_pembayaran`
+--
+
+CREATE TABLE IF NOT EXISTS `konfirmasi_pembayaran` (
+  `id_konfirmasi` int(15) NOT NULL AUTO_INCREMENT,
+  `nama_pengirim` varchar(100) NOT NULL,
+  `tlp` varchar(15) NOT NULL,
+  `jumlah_bayar` int(50) NOT NULL,
+  `tgl_bayar` datetime NOT NULL,
+  `nama_bank_pengirim` varchar(50) NOT NULL,
+  `bank_tujuan` varchar(50) NOT NULL,
+  `metode_pembayaran` varchar(50) NOT NULL,
+  `kode_transaksi` bigint(150) NOT NULL,
+  `status` enum('nocheck','check') NOT NULL DEFAULT 'nocheck',
+  PRIMARY KEY (`id_konfirmasi`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `konfirmasi_pembayaran`
+--
+
+INSERT INTO `konfirmasi_pembayaran` (`id_konfirmasi`, `nama_pengirim`, `tlp`, `jumlah_bayar`, `tgl_bayar`, `nama_bank_pengirim`, `bank_tujuan`, `metode_pembayaran`, `kode_transaksi`, `status`) VALUES
+(1, 'Alvin', '0808080', 400000000, '2015-02-02 11:39:10', 'BRI', 'BRI', 'Transfer', 242423424, 'nocheck');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `negara`
 --
 
@@ -7644,6 +7674,7 @@ CREATE TABLE IF NOT EXISTS `set_banner` (
   `deskripsi` text NOT NULL,
   `img` varchar(50) NOT NULL,
   `status` varchar(1) NOT NULL,
+  `link` text NOT NULL,
   PRIMARY KEY (`id_banner`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -7651,8 +7682,78 @@ CREATE TABLE IF NOT EXISTS `set_banner` (
 -- Dumping data for table `set_banner`
 --
 
-INSERT INTO `set_banner` (`id_banner`, `judul`, `deskripsi`, `img`, `status`) VALUES
-(1, 'Selamat Datang', 'Selamat Datang di Website Pemasaran UMKM PNPM Kecamatan Piyungan', 'bg1.jpg', '1');
+INSERT INTO `set_banner` (`id_banner`, `judul`, `deskripsi`, `img`, `status`, `link`) VALUES
+(1, 'Selamat Datang', 'Selamat Datang di Website Pemasaran UMKM PNPM Kecamatan Piyungan', 'bg1.jpg', '1', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi_detail`
+--
+
+CREATE TABLE IF NOT EXISTS `transaksi_detail` (
+  `kode_transaksi` bigint(150) NOT NULL,
+  `id_user` int(20) NOT NULL,
+  `nama_penerima` varchar(150) NOT NULL,
+  `email_penerima` varchar(150) NOT NULL,
+  `alamat_penerima` text NOT NULL,
+  `propinsi` varchar(150) NOT NULL,
+  `kota` varchar(150) NOT NULL,
+  `kodepos` varchar(100) NOT NULL,
+  `telpon` varchar(20) NOT NULL,
+  `metode` varchar(50) NOT NULL,
+  `paket_kirim` varchar(10) NOT NULL,
+  `bank` varchar(100) NOT NULL,
+  `pesan` text NOT NULL,
+  `status` enum('Pending','Lunas','Batal','') NOT NULL DEFAULT 'Pending',
+  `tgl_transaksi` datetime NOT NULL,
+  PRIMARY KEY (`kode_transaksi`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaksi_detail`
+--
+
+INSERT INTO `transaksi_detail` (`kode_transaksi`, `id_user`, `nama_penerima`, `email_penerima`, `alamat_penerima`, `propinsi`, `kota`, `kodepos`, `telpon`, `metode`, `paket_kirim`, `bank`, `pesan`, `status`, `tgl_transaksi`) VALUES
+(20111027001, 1, 'Gede Suma Wijaya', 'gedesumawijaya@gmail.com', 'Bali', 'Bali', 'Denpasar', '283728', '083847395705', 'Setoran Tunai, Transfer Bank', 'TIKI', 'Bank Central Asia - No. Rek 1800658299', 'Selamat datang di grosirsandalonline.com.Kami tidak membebani anda dengan barang yag tidak laku atau..', 'Pending', '0000-00-00 00:00:00'),
+(20111027002, 1, 'Gede Suma Wijaya', 'gedesumawijaya@gmail.com', 'Bali', 'Bali', 'Denpasar', '283728', '083847395705', 'Setoran Tunai, Transfer Bank', 'TIKI', 'Bank Central Asia - No. Rek 1800658299', 'Selamat datang di grosirsandalonline.com.Kami tidak membebani anda dengan barang yag tidak laku atau..', 'Pending', '0000-00-00 00:00:00'),
+(20111027003, 1, 'Gede Suma Wijaya', 'gedesumawijaya@gmail.com', 'Bali', 'Bali', 'Denpasar', '283728', '083847395705', 'Setoran Tunai, Transfer Bank', 'TIKI', 'Bank Central Asia - No. Rek 1800658299', 'asu', 'Pending', '0000-00-00 00:00:00'),
+(20111027004, 1, 'Gede Suma Wijaya', 'gedesumawijaya@gmail.com', 'Bali', 'Bali', 'Denpasar', '283728', '083847395705', 'Setoran Tunai, Transfer Bank', 'TIKI', 'Bank Central Asia - No. Rek 1800658299', 'asuuu', 'Pending', '0000-00-00 00:00:00'),
+(20111028005, 1, 'Gede Suma Wijaya', 'gedesumawijaya@gmail.com', 'Bali', 'Bali', 'Denpasar', '283728', '083847395705', 'Setoran Tunai, Transfer Bank', 'TIKI', 'Bank Central Asia - No. Rek 1800658299', 'Selamat datang di grosirsandalonline.com.Kami tidak membebani anda dengan barang yag tidak laku atau...[baca]', 'Pending', '0000-00-00 00:00:00'),
+(20111230001, 1, 'Gede Suma Wijaya', 'go_blin@gmail.com', '<p>bali</p>', 'Bali', 'Denpasar', '80000', '083847395705', 'Setoran Tunai, Transfer Bank', 'TIKI', 'Bank Central Asia - No. Rek 1800658299', '-', 'Pending', '0000-00-00 00:00:00'),
+(20111230002, 1, 'Gede Suma Wijaya', 'go_blin@gmail.com', '<p>bali</p>', 'Bali', 'Denpasar', '80000', '083847395705', 'Setoran Tunai, Transfer Bank', 'TIKI', 'Bank Central Asia - No. Rek 1800658299', '-', 'Pending', '0000-00-00 00:00:00'),
+(20120412001, 1, 'Gede Suma Wijaya', 'go_blin@gmail.com', '<p>bali</p>', 'Bali', 'Denpasar', '80000', '083847395705', 'Setoran Tunai, Transfer Bank', 'TIKI', 'Bank Central Asia - No. Rek 1800658299', '-', 'Lunas', '0000-00-00 00:00:00'),
+(20140924001, 1, 'Gede Suma Wijaya', 'go_blin@gmail.com', '<p>bali</p>', 'Bali', 'Denpasar', '80000', '083847395705', 'Internet Banking', 'TIKI', 'Bank Mandiri - No. Rek 143-00-1170047-1', '-', 'Pending', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi_item`
+--
+
+CREATE TABLE IF NOT EXISTS `transaksi_item` (
+  `kode_transaksi_item` int(50) NOT NULL AUTO_INCREMENT,
+  `kode_transaksi` bigint(150) NOT NULL,
+  `id_produk` varchar(50) NOT NULL,
+  `nama_produk` varchar(150) NOT NULL,
+  `harga` varchar(50) NOT NULL,
+  `jumlah` int(10) NOT NULL,
+  PRIMARY KEY (`kode_transaksi_item`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `transaksi_item`
+--
+
+INSERT INTO `transaksi_item` (`kode_transaksi_item`, `kode_transaksi`, `id_produk`, `nama_produk`, `harga`, `jumlah`) VALUES
+(1, 20111027001, 'SDL000015', 'Sandal Wanita Hak Tinggi Cokelat', '100000', 5),
+(2, 20111027001, 'SDL000001', 'Sandal Anak Gaul Kuning', '15000', 6),
+(3, 20111027002, 'SDL000002', 'Sandal Anak Gaul Merah', '150000', 9),
+(4, 20111230001, 'SDL100001', 'Sandal Anak Gaul Kuning', '20000', 5),
+(5, 20111230002, 'SDL100001', 'Sandal Anak Gaul Kuning', '20000', 5),
+(6, 20111230002, 'SDL100002', 'gggg', '14000', 10),
+(7, 20120412001, 'SDL100001', 'Sandal Anak Gaul Kuning', '20000', 10),
+(8, 20140924001, 'SDL100001', 'Sandal Anak Gaul Kuning', '20000', 5);
 
 --
 -- Constraints for dumped tables
