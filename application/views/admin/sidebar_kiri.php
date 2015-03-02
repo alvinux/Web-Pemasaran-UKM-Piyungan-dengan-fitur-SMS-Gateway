@@ -3,7 +3,7 @@
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
-                    <div class="user-panel">
+                    <!-- <div class="user-panel">
                         <div class="pull-left image">
                             <img src="<?php echo base_url(); ?>doc/themes/admin/img/avatar3.png" class="img-circle" alt="User Image" />
                         </div>
@@ -12,7 +12,7 @@
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- search form -->
                     <form action="#" method="get" class="sidebar-form">
                         <div class="input-group">

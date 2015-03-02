@@ -16,21 +16,23 @@
 		</div><!--/Thumbnail produk &detail-------->
 
 		<div class="col-sm-6"><!-----Detail Profile---------------->
-			<form class="form-horizontal" action="#" method="post" accept-charset="utf-8">            
+			<?php echo form_open('proses_ubah/biodata'); ?>
+			<div class="form-horizontal" action="#" method="post" accept-charset="utf-8">            
 
 				<h3 class="">Ubah Biodata Diri</h3>
 				<hr>
 				<div class="form-group"><!----nama---->
-					<label style="text-align: left; " class="col-sm-4 control-label" for="nama">Nama Lengkap</label>
+					<label style="text-align: left; " class="col-sm-4 control-label" for="nama" >Nama Lengkap</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="formreg" value="<?php echo $row['nama']; ?> " type="text" >
+						<input class="form-control" id="formreg" name="nama" value="<?php echo $row['nama']; ?> " type="text" >
+						<input name="id_user" type="hidden" value="<?php echo $row['id_user']; ?>">
 					</div>
 				</div><!--/nama------>
 
 				<div class="form-group"><!----nama---->
 					<label style="text-align: left; " class="col-sm-4 control-label" for="nama">Nama Panggilan</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="formreg" value="<?php echo $row['username_user']; ?> " type="text" >
+						<input class="form-control" id="formreg" name="username_user" value="<?php echo $row['username_user']; ?> " type="text" >
 					</div>
 				</div><!--/nama------>
 				<div class="form-group"><!---taggal lahir-->
@@ -58,19 +60,19 @@
 				<div class="form-group"><!---email---->
 					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="email">Email</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="formreg" value="<?php echo $row['email']; ?>" type="text" >
+						<input class="form-control" id="formreg" name="email" value="<?php echo $row['email']; ?>" type="text" >
 					</div>
 				</div><!------/email-------->
 				<div class="form-group"><!---Tlp------>
 					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="hp">HP</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="formreg" value="<?php echo $row['telpon']; ?> " type="text" >
+						<input class="form-control" id="formreg" name="telpon" value="<?php echo $row['telpon']; ?> " type="text" >
 					</div>
 				</div><!------/Tlp-------------->
 				<div class="form-group"><!---Alamat------------>
 					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="alamat">Alamat</label>
 					<div class="col-sm-8">
-						<textarea class="form-control" rows="3" placeholder="<?php echo $row['alamat']; ?>"><?php echo $row['alamat']; ?></textarea>
+						<textarea class="form-control" rows="3" name="alamat" placeholder="<?php echo $row['alamat']; ?>"><?php echo $row['alamat']; ?></textarea>
 					</div>
 				</div><!------/Alamat-------------------------->
 				<!---Povinsi-->
@@ -97,7 +99,7 @@
 				<div class="form-group"><!---Kodepos------------------------>
 					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="kodepos">Kode Pos</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="formreg" value="<?php echo $row['kode_pos']; ?>" type="text"  <?php if ($row['status'] === 'penjual') { echo 'disabled="disabled"'; } else { echo ''; }//start if stok=0 ?>>
+						<input class="form-control" id="formreg" name="kode_pos" value="<?php echo $row['kode_pos']; ?>" type="text"  <?php if ($row['status'] === 'penjual') { echo 'disabled="disabled"'; } else { echo ''; }//start if stok=0 ?>>
 					</div>
 				</div><!------/Kodepos------------>
 				<div class="form-group"><!---Password utk ubahdata------------------------>
@@ -109,7 +111,8 @@
 				<button name="simpan" type="submit" class="btn btn-primary btn-lg bold"><span class="glyphicon glyphicon-ok"></span> Simpan</button>
 
 				.
-			</form>
+			</div>
+		</form>
 		</div><!--detail produk---->
 
 

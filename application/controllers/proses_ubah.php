@@ -88,20 +88,52 @@ class proses_ubah extends CI_Controller {
 
     public function biodata() {
         if ($this->session->userdata('login_user')) {
-        $id_user = $_GET['id_user'];
+        $id_user = $_POST['id_user'];
         $this->db->where('id_user', $id_user);
 
         $this->nama = $this->input->post('nama');
+        $this->username_user = $this->input->post('username_user'); // cara Setting supaya jika username lebih dari 10 karakter maka muncul pesan error edit profil gagal
         $this->email = $this->input->post('email');
-        $this->telepon = $this->input->post('telepon');
+        $this->telpon = $this->input->post('telpon');
         $this->id_provinsi = $this->input->post('provinsi');
-        $this->id_kab_kota = $this->input->post('kabupaten');
+        $this->id_kota = $this->input->post('kabupaten');
         $this->id_kecamatan = $this->input->post('kecamatan');
         $this->alamat = $this->input->post('alamat');
         $this->kode_pos = $this->input->post('kode_pos');
         
-        if (!empty($_POST['provinsi'])&&!empty($_POST['kabupaten'])&&!empty($_POST['kecamatan'])) {
-            $this->db->update('user', $this);
+            if (!empty($_POST['provinsi'])&&!empty($_POST['kabupaten'])&&!empty($_POST['kecamatan'])) {
+                $this->db->update('data_user', $this);
+                echo '<script>';
+                echo "alert('Biodata Berhasil Diubah');";
+                echo "window.location='".$this->agent->referrer()."'";
+                echo '</script>';
+            } else {
+                echo '<script>';
+                echo "alert('Ubah biodata gagal, mohon lengkapi alamat Anda');";
+                echo "window.location='".$this->agent->referrer()."'";
+                echo '</script>';
+            }
+        } 
+        else {
+            redirect('home');
+        }
+    }//end function biodata
+
+
+
+
+    public function pass_user() {
+        if ($this->session->userdata('login_user')) {
+            $id_user = $_POST['id_user'];
+            $this->db->where('id_user', $id_user);
+
+            $password_lama = $_POST('password');
+            $newpassword = $this->input->post('newpassword'); // cara Setting supaya jika username lebih dari 10 karakter maka muncul pesan error edit profil gagal
+            $this->newpasswordconf = $this->input->post('newpasswordconf');
+         
+        
+            if ($password) {
+            $this->db->update('data_user', $this);
             echo '<script>';
             echo "alert('Biodata Berhasil Diubah');";
             echo "window.location='".$this->agent->referrer()."'";
@@ -112,10 +144,13 @@ class proses_ubah extends CI_Controller {
             echo "window.location='".$this->agent->referrer()."'";
             echo '</script>';
         }
-        } else {
-            redirect('beranda');
-        }
-    }//end function biodata
+    } 
+    else {
+        redirect('home');
+    }
+
+
+    }
 
     public function foto() {
         if ($this->session->userdata('login_user')) {
@@ -261,7 +296,6 @@ class proses_ubah extends CI_Controller {
 	        redirect('beranda/admin');
 	        }//end session
 	}//end function admin
-
 
 }//end class
 ?>
