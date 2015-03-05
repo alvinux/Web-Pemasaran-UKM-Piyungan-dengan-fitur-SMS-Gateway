@@ -115,13 +115,9 @@ Class M_user extends CI_Model {
     }
 
 
-
-
-
-
    function ubah_pass_user() {
-        $id_user = $_POST['id_user'];
-        $this->password = $this->input->post('password');
+        $id_user = $this->session->userdata['login_user']['id_user'];
+        $this->pass_user = $this->input->post('newpassword');
         
         // $this->password = $this->input->post('password');
         $this->db->where('id_user', $id_user);

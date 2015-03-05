@@ -23,6 +23,8 @@ class Home extends CI_Controller {
 			$data['hotlist'] = $this->m_produk->show_hot_item();
 			$data['terlaris'] = $this->m_produk->show_terlaris();
 
+			// $data['datalist'] = array();
+// $data['datalist'] = array($hotlist);
 			//load View
 			$this->load->view('base/head', $data);
 			
@@ -135,13 +137,16 @@ class Home extends CI_Controller {
 	public function profile_user()
 	{	
 		if ($this->session->userdata('login_user')) {
-			$data['provinsi'] = $this->m_content->provinsi();
-
 			//mengambil session proses_masuk dan menyimpan session email
 			$session_data = $this->session->userdata('login_user');
 			$data['title']= 'Profile';
 			$data['biodata'] = $this->m_user->biodata();
 
+			
+			
+			$data['provinsi'] = $this->m_content->provinsi();
+			$data['kab_kota'] = $this->m_content->kab_kota($data['biodata']['id_provinsi']);
+			$data['kecamatan'] = $this->m_content->kecamatan($data['biodata']['id_kota']);
 			//load View
 			$this->load->view('base/head', $data);
 

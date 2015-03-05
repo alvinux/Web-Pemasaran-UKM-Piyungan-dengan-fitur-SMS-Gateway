@@ -49,8 +49,8 @@ Class M_admin extends CI_Model {
     }
 
    function ubah_pass_admin() {
-    	$id_admin = $_POST['id_admin'];
-    	$this->password = $this->input->post('password');
+    	$id_admin = $this->session->userdata['login_admin']['id_admin'];
+    	$this->pass_admin = $this->input->post('newpassword');
     	
     	// $this->password = $this->input->post('password');
     	$this->db->where('id_admin', $id_admin);

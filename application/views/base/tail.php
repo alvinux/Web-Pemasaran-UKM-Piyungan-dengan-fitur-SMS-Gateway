@@ -9,7 +9,6 @@
 
     
 
-    <script src="<?php echo base_url(); ?>doc/themes/public/js/jquery.js"></script>
 <!--    <script src="js/bootstrap.min.js"></script>-->
 
     <!-- Le javascript

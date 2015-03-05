@@ -112,8 +112,8 @@ class Proses extends CI_Controller {
 					'nama' => $row->nama,
 					'email' => $row->email,
 					'img_user' => $row->img_user,
-					'status' => $row->status
-					// 'foto' => $row->foto
+					'status' => $row->status,
+					'pass_user' => $row->pass_user
 					);
 				$this->session->set_userdata('login_user', $sess_array);
 			}
@@ -174,7 +174,8 @@ class Proses extends CI_Controller {
 					'nama_admin' => $row->nama_admin,
 					'username_admin' => $row->username_admin,
 					//'img_user' => $row->img_user,
-					'stts' => $row->stts
+					'stts' => $row->stts,
+					'pass_admin' => $row->pass_admin
 					// 'foto' => $row->foto
 					);
 				$this->session->set_userdata('login_admin', $sess_array);

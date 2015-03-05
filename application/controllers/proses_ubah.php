@@ -102,6 +102,19 @@ class proses_ubah extends CI_Controller {
         $this->kode_pos = $this->input->post('kode_pos');
         
             if (!empty($_POST['provinsi'])&&!empty($_POST['kabupaten'])&&!empty($_POST['kecamatan'])) {
+                $mysession = $this->session->userdata('login_user');
+                     $sess_array = array(
+                        'id_user' => $mysession['id_user'],
+                        'username_user' => $this->input->post('username_user'),
+                        'nama' => $this->input->post('nama'),
+                        'email' => $this->input->post('email'),
+                        'img_user' => $mysession['img_user'],
+                        'status' => $mysession['status'],
+                        'pass_user' => $mysession['pass_user'],
+                        );
+
+                $this->session->set_userdata('login_user', $sess_array);
+
                 $this->db->update('data_user', $this);
                 echo '<script>';
                 echo "alert('Biodata Berhasil Diubah');";
@@ -124,32 +137,56 @@ class proses_ubah extends CI_Controller {
 
     public function pass_user() {
         if ($this->session->userdata('login_user')) {
-            $id_user = $_POST['id_user'];
-            $this->db->where('id_user', $id_user);
+          //  $id_user = $_POST['id_user'];
+            $pass_user = $this->session->userdata('login_user')['pass_user'];
+           // $this->db->where('id_user', $id_user);
 
-            $password_lama = $_POST('password');
-            $newpassword = $this->input->post('newpassword'); // cara Setting supaya jika username lebih dari 10 karakter maka muncul pesan error edit profil gagal
-            $this->newpasswordconf = $this->input->post('newpasswordconf');
-         
-        
-            if ($password) {
-            $this->db->update('data_user', $this);
-            echo '<script>';
-            echo "alert('Biodata Berhasil Diubah');";
-            echo "window.location='".$this->agent->referrer()."'";
-            echo '</script>';
+
+            $this->form_validation->set_rules('newpassword', 'Password', 'trim|required|min_length[6]|md5|max_length[50]|xss_clean');
+            $this->form_validation->set_rules('newpasswordconf', 'Password Konfimasi', 'trim|required|matches[newpassword]|md5|xss_clean');
+            $run= $this->form_validation->run();
+
+
+            $password_lama = MD5($this->input->post('passwordlama'));
+            $newpassword = $this->input->post('newpassword'); 
+            //$sess_array = array();
+
+            if ($run == TRUE ) {
+                if ($pass_user == $password_lama) {
+                    $mysession = $this->session->userdata('login_user');
+                     $sess_array = array(
+                        'id_user' => $mysession['id_user'],
+                        'username_user' => $mysession['username_user'],
+                        'nama' => $mysession['nama'],
+                        'email' => $mysession['email'],
+                        'img_user' => $mysession['img_user'],
+                        'status' => $mysession['status'],
+                        'pass_user' => $this->input->post('newpassword')
+                        );
+
+                   $this->session->set_userdata('login_user', $sess_array);
+                    
+                   $this->m_user->ubah_pass_user();
+
+                    echo '<script>';
+                    echo "alert('Password Berhasil Dirubah');";
+                    echo "window.location='".$this->agent->referrer()."'";
+                    echo '</script>';
+                } else {
+                   echo '<script>';
+                   echo "alert('Gagal Ubah password, Password lama tidak sesuai');";
+                   echo "window.location='".$this->agent->referrer()."'";
+                   echo '</script>';
+               }
+            } else {
+                echo '<script>';
+                echo "alert('Konfimasi Password tidak sama, atau Password kurang dari 6 karakter.');";
+                echo "window.location='".$this->agent->referrer()."'";
+                echo '</script>';
+            }
         } else {
-            echo '<script>';
-            echo "alert('Ubah biodata gagal, mohon lengkapi alamat Anda');";
-            echo "window.location='".$this->agent->referrer()."'";
-            echo '</script>';
+            redirect('home');
         }
-    } 
-    else {
-        redirect('home');
-    }
-
-
     }
 
     public function foto() {
@@ -194,6 +231,17 @@ class proses_ubah extends CI_Controller {
         }
     }//end function foto
 
+
+
+
+
+
+
+
+
+
+
+/////////////ADMIN AREA
     public function foto_admin() {
         if($this->session->userdata('login_admin')) {
             $id_admin = $this->session->userdata('login_admin')['id_admin'];
@@ -266,36 +314,66 @@ class proses_ubah extends CI_Controller {
 	        redirect('beranda/admin');
 	        }//end session
 	}//end function admin
-	public function pass_admin() {
-	    if($this->session->userdata('login_admin')) {
-	        $this->form_validation->set_rules('password', 'Password lama', 'trim|required|matches[data_admin.password]|min_length[6]|md5|max_length[50]|xss_clean');
-	        $this->form_validation->set_rules('newpassword', 'Password', 'trim|required|matches[password]|md5|xss_clean');
-	        $this->form_validation->set_rules('newpasswordconf', 'Password Konfimasi', 'trim|required|matches[newpassword]|md5|xss_clean');
-	        $run= $this->form_validation->run();
+	
 
-	        if ($run == TRUE) {
-	            $this->m_admin->ubah_pass_admin(); //kirim ke m_admin
-	            echo '<script>';
-	            echo "alert('Password Berhasil Diubah');";
-	            echo "window.location='../admin/pengaturan_admin'";
-	            echo '</script>';
-	        } else {
-	        	echo '<script>';
-	            echo "alert('Password Gagal Diubah, ".form_error('password')."".form_error('password_conf')."');";
-	            echo "window.location='../admin/pengaturan_admin'";
-	            echo '</script>';
-	          	$data['biodata'] = $this->m_admin->biodata_admin();
-				$this->load->view('base/head_adm');
-				
-				$this->load->view('admin/header');
-				$this->load->view('admin/sidebar_kiri');
-				$this->load->view('admin/sisi_kanan',$data);
-				$this->load->view('base/tail_adm');
-	        }
-	    } else {
-	        redirect('beranda/admin');
-	        }//end session
-	}//end function admin
+
+
+    public function pass_admin() {
+        if ($this->session->userdata('login_admin')) {
+          //  $id_user = $_POST['id_user'];
+            $pass_admin = $this->session->userdata('login_admin')['pass_admin'];
+           // $this->db->where('id_user', $id_user);
+
+
+            $this->form_validation->set_rules('newpassword', 'Password', 'trim|required|min_length[6]|md5|max_length[50]|xss_clean');
+            $this->form_validation->set_rules('newpasswordconf', 'Password Konfimasi', 'trim|required|matches[newpassword]|md5|xss_clean');
+            $run= $this->form_validation->run();
+
+
+            $password_lama = MD5($this->input->post('passwordlama'));
+            $newpassword = $this->input->post('newpassword'); 
+            //$sess_array = array();
+
+            if ($run == TRUE ) {
+                if ($pass_admin == $password_lama) {
+                    $mysession = $this->session->userdata('login_admin');
+                     $sess_array = array(
+                        'id_admin' => $mysession['id_admin'],
+                        'username_admin' => $mysession['username_admin'],
+                        'nama_admin' => $mysession['nama_admin'],
+                        // 'email' => $mysession['email'],
+                        // 'img_user' => $mysession['img_user'],
+                        'stts' => $mysession['stts'],
+                        'pass_admin' => $this->input->post('newpassword')
+                        );
+                     
+                   $this->session->set_userdata('login_admin', $sess_array);
+                    
+                   $this->m_admin->ubah_pass_admin();
+
+                    echo '<script>';
+                    echo "alert('Password Berhasil Dirubah');";
+                    echo "window.location='".$this->agent->referrer()."'";
+                    echo '</script>';
+                } else {
+                   echo '<script>';
+                   echo "alert('Gagal Ubah password, Password lama tidak sesuai');";
+                   echo "window.location='".$this->agent->referrer()."'";
+                   echo '</script>';
+               }
+            } else {
+                echo '<script>';
+                echo "alert('Konfimasi Password tidak sama, atau Password kurang dari 6 karakter.');";
+                echo "window.location='".$this->agent->referrer()."'";
+                echo '</script>';
+            }
+        } else {
+            redirect('admin/home');
+        }
+    }
+
+
+
 
 }//end class
 ?>

@@ -8,11 +8,12 @@
                     <h3 class="modal-title" id="myModalLabel">Ganti Password</h3>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form">
+                    <?php echo form_open('proses_ubah/pass_user'); ?>
+                    <div class="form-horizontal" role="form">
                         <div class="form-group">
                             <label class="col-sm-4 control-label" for="inputEmail">Password Lama</label>
                             <div class="col-sm-6">
-                                <input type="password" class="form-control"  id="inputPasslama" placeholder="Password" name="password">
+                                <input type="password" class="form-control"  id="inputPasslama" placeholder="Password" name="passwordlama">
                             </div>
                         </div>
 						<hr>
@@ -25,7 +26,7 @@
 						<div class="form-group">
                             <label class="col-sm-4 control-label" for="inputPassword">Ulangi Password Baru</label>
                             <div class="col-sm-6">
-                                <input type="password" class="form-control" id="retypeNewPassword" placeholder="" name="newpassword">
+                                <input type="password" class="form-control" id="retypeNewPassword" placeholder="" name="newpasswordconf">
                             </div>
                         </div>
                         
@@ -36,6 +37,7 @@
 								
                             </div>
                         </div>
+                    </div>
                     </form>
                 </div>
                 <hr style="margin: 0; padding: 0;">

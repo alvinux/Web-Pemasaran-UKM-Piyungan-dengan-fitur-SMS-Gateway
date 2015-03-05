@@ -13,7 +13,7 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label" for="inputEmail">Password Lama</label>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control"  id="inputPasslama" placeholder="Password" name="password">
+                                    <input type="password" class="form-control"  id="inputPasslama" placeholder="Password" name="passwordlama">
                                 </div>
                             </div>
     						<hr>

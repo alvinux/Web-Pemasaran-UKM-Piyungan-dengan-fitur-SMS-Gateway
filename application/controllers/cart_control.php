@@ -4,7 +4,7 @@
 * 
 */
 require_once 'application/controllers/base.php';
-class Barang extends Base {
+class Cart_control extends Base {
 	
 	public function __construct(){
 		parent::__construct();
@@ -15,15 +15,15 @@ class Barang extends Base {
 
 	//tambah ke cart
 	public function add_cart(){
-		$id_barang = $_POST['id_barang'];
+		$id_produk = $_POST['id_produk'];
 		$harga = $_POST['harga'];
 		$jumlah = $_POST['jumlah'];
 		//query menampilkan detail barang berdasasrkan id barang
-		$this->db->where('id_barang',$id_barang);
-		$querybarang = $this->db->get('barang');
-		$querybarang = $querybarang->row_array();
+		$this->db->where('id_produk',$id_produk);
+		$queryprod = $this->db->get('data_produk');
+		$queryprod = $queryprod->row_array();
 		//instanisasi
-		$barang = $querybarang['barang'];
+		$produk = $querybarang['data_produk'];
 		$harga_asli = $querybarang['harga'];//harga asli
 		$total_harga_asli = $harga_asli * $jumlah;
 		$berat = $querybarang['berat'];//berat barang perunit
@@ -31,10 +31,10 @@ class Barang extends Base {
 
 		//memasukan ke dalam cart
 		$insert = array(
-			'id'=>$id_barang,
+			'id'=>$id_produk,
 			'qty'=>$jumlah,
 			'price'=>$harga,
-			'name'=>$barang,
+			'name'=>$produk,
 			'total_harga_asli'=>$total_harga_asli,
 			'total_berat'=>$total_berat,		
 			);
@@ -45,8 +45,8 @@ class Barang extends Base {
 		redirect($this->agent->referrer());
 	}
 	//menambah barang dari tombol beli
-	public function add_cart_from_beranda(){
-		$id_barang = $_POST['id_barang'];
+	public function add_cart_from_home(){
+		$id_produk = $_POST['id_produk'];
 		//cek di cart apakah sudah ada
 		//mencari id barang di array cart
 		$notfound = true;
@@ -66,17 +66,17 @@ class Barang extends Base {
 			if($notfound){
 				//deskripsi barang yang harus diinsert
 				$jumlah = 1;
-				$detail_barang = $this->m_beranda->get_barang_by_id($id_barang);
+				$detail_produk = $this->m_produk->get_produk_by_id($id_produk);
 				$barang = $detail_barang['barang'];
-				$harga = $detail_barang['harga'] - ($detail_barang['harga'] * $detail_barang['diskon'] / 100);
-				$total_harga_asli = $detail_barang['harga'];
+				$harga = $detail_produk['harga'] -  $detail_produk['grosir'];
+				$total_harga_asli = $detail_produk['harga'];
 				$total_berat = $detail_barang['berat'];
 				//bikin cart baru
 				$insert = array(
-					'id'=>$id_barang,
+					'id'=>$id_produk,
 					'qty'=>$jumlah,
 					'price'=>$harga,
-					'name'=>$barang,
+					'name'=>$produk,
 					'total_harga_asli'=>$total_harga_asli,
 					'total_berat'=>$total_berat,		
 					);
@@ -95,9 +95,9 @@ class Barang extends Base {
 
 	//delete cart
 		public function delete_cart(){
-			$id_barang = $_GET['id'];
+			$id_produk = $_GET['id'];
 			$data = array(
-				'rowid'=>$id_barang,
+				'rowid'=>$id_produk,
 				'qty'=>0
 				);
 			$this->cart->update($data);

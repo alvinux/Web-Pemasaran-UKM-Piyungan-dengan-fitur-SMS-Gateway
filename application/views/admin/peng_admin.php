@@ -20,7 +20,7 @@
 				<div class="form-group"><!----nama---->
 					<label style="text-align: left; " class="col-sm-4 control-label" for="nama">User ID</label>
 					<div class="col-sm-8">
-						<input name="username_admin" class="form-control" id="formreg" value="<?php echo $row['username_admin']; ?> " type="text" >
+						<input name="username_admin" class="form-control" id="formreg" value="<?php echo $row['username_admin']; ?>" type="text" >
 						<label class="col-md-12 control-label text-danger"><?php echo form_error('username_admin'); ?></label>
 					</div>
 				</div><!--/nama------>
@@ -28,7 +28,7 @@
 				<div class="form-group"><!----nama---->
 					<label style="text-align: left; " class="col-sm-4 control-label" for="nama">Nama Admin</label>
 					<div class="col-sm-8">
-						<input name="nama_admin" class="form-control" id="formreg" value="<?php echo $row['nama_admin']; ?> " type="text" >
+						<input name="nama_admin" class="form-control" id="formreg" value="<?php echo $row['nama_admin']; ?>" type="text" >
 						<label class="col-md-12 control-label text-danger"><?php echo form_error('nama_admin'); ?></label>
 					</div>
 				</div><!--/nama------>
@@ -43,7 +43,7 @@
 				<div class="form-group"><!---Tlp------>
 					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="hp">HP</label>
 					<div class="col-sm-8">
-						<input name="telpon" class="form-control" id="formreg" value="<?php echo $row['telpon']; ?> " type="text" >
+						<input name="telpon" class="form-control" id="formreg" value="<?php echo $row['telpon']; ?>" type="text" >
 						<label class="col-md-12 control-label text-danger"><?php echo form_error('telpon'); ?></label>
 					</div>
 				</div><!------/Tlp-------------->
