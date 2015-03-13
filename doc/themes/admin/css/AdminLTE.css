@@ -3562,3 +3562,45 @@ fieldset[disabled] .btn-vk.active {
 font-size: 14px;
 line-height: 1.428571429;
 }
+
+
+/*CSS Content Thumbnail CUstom*/
+.deskripsi-produk{
+  background-color: rgb(241, 241, 241); 
+  margin-left: 0; 
+  padding-left: 0;
+  margin: 0;
+  padding: 0;/* height: 100%; */
+}
+
+
+.nama-produk{
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-weight: bold;
+  font-style: inherit;
+}
+.thumb-harga{
+  color:red;
+  font-size: 15px;
+  text-align: left;
+  padding-left: 10px;
+  font-weight: bold;
+  font-style: italic; 
+  margin-bottom: 0px
+}
+.divstok{
+  padding: 0px;  
+  margin: 0;
+  height: 100%;
+  background-color: rgb(245, 245, 245);
+  border-left: solid rgb(212, 212, 212);    
+}
+.pstok{
+  font-size: 16px;
+  font-weight: bold;
+  height: 75px;
+  margin: 0;
+}
+    

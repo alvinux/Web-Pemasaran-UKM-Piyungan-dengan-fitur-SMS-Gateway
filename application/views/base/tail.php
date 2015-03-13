@@ -20,7 +20,7 @@
         <script src="js/jquery-1.10.1.min.js"></script>
         <script src="js/main.js"></script>-->
 
-<script src="<?php echo base_url(); ?>doc/themes/public/js/site.min.js"></script> 
+    <script src="<?php echo base_url(); ?>doc/themes/public/js/site.min.js"></script> 
     <script src="<?php echo base_url(); ?>doc/themes/public/js/jquery.prettyPhoto.js"></script>
     <script src="<?php echo base_url(); ?>doc/themes/public/js/main.js"></script>
     
@@ -58,6 +58,8 @@
 </script>
 
 
+    <script>$("#ellipsis").ellipsis();</script>
+    <script src="<?php echo base_url(); ?>doc/themes/public/js/jquery.text-overflow.js"></script> 
 
     <!-- <script src="js/jquery.js"></script>
             <script src="js/bootstrap-transition.js"></script>

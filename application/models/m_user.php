@@ -125,14 +125,15 @@ Class M_user extends CI_Model {
     }
 
 
+   function tlpuser($SenderNumber) {
+        $tlp = $SenderNumber;
 
+        $sql = "SELECT * FROM data_user WHERE telpon =  ?";
+        // $this->password = $this->input->post('password');
+        $query = $this->db->query($sql,$tlp);
+        // $this->db->where('telpon', $tlp);
+        return $query->num_rows();//menampilkan berupa angka
 
-
-
-
-
-
-
-
+    }
 }	
 ?>
