@@ -293,21 +293,50 @@ class Admin extends CI_Controller {
 								break;
 							}
 						default:
-						# code...
+							if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
+								return $this->m_sms->salah($pin,$i['ID'],$SenderNumber);//pin and id
+								break;
+							} else {
+								echo $i['SenderNumber'];
+								break;
+							}
 						break;
 						}
 						
 					}else if($totalIndex == 3){
 						switch ($explodeInbox[0]) {
 							case 'CHP'://check jumlah produk
-							$kpr = $explodeInbox[1];
-							$pin = $explodeInbox[2];
-								return $this->m_sms->chp($pin,$kpr,$i['ID']);//pin and id
-								break;
+								$kpr = $explodeInbox[1];
+								$pin = $explodeInbox[2];
+									if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
+									return $this->m_sms->chp($pin,$i['ID'],$SenderNumber,$kpr);//pin and id
+									break;
+								} else {
+									echo $i['SenderNumber'];
+									break;
+								}
 
-								default:
-								# code...
-								break;
+
+								case 'CSTP'://check Stok produk
+								$kpr = $explodeInbox[1];
+								$pin = $explodeInbox[2];
+									if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
+									return $this->m_sms->cstp($pin,$i['ID'],$SenderNumber,$kpr);//pin and id
+									break;
+								} else {
+									echo $i['SenderNumber'];
+									break;
+								}
+
+							default:
+									if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
+										return $this->m_sms->salah($pin,$i['ID'],$SenderNumber);//pin and id
+										break;
+									} else {
+										echo $i['SenderNumber'];
+										break;
+									}
+							break;
 							}
 
 

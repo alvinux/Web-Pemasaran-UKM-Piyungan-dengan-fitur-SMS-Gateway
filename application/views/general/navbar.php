@@ -45,48 +45,67 @@
                     <?php if ($this->session->userdata('login_user')) {?>
                          <?php //echo $this->session->userdata('login_user');?>
                     <li class="btnav">
-                            <a class="btnav dropdown-toggle navbar-btn" href="#" data-toggle="dropdown">
-                                <i class="glyphicon glyphicon-user"></i>
-                                <span><?php echo $this->session->userdata('login_user')['username_user'];?> <i class="caret"></i></span>
-                            </a>
-                            <ul style="width: 280px;" class="dropdown-menu">
-                                <!-- User image -->
-                                <li class="user-header bg-light-blue">
-                                    <img src="<?php echo base_url('assets/img/photo/'.$this->session->userdata('login_user')['img_user']);?>" class="img-circle" alt="User Image">
-                                    <?php //echo base_url('assets/img/photo/'.$this->session->userdata('login_user')['img_user']);?>
-                                    <p>
-                                        <?php echo $this->session->userdata('login_user')['nama'];?><br>
-                                        <small><?php echo $this->session->userdata('login_user')['email'];?></small>
-                                    </p>
-                                </li>
-                                <!-- Menu Body -->
-                                <li class="user-body">
-                                    
-                                </li>
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div style="padding: 10px;" class="pull-left">
-                                        <a class="btn btn-success btn-flat" href="<?php echo site_url('home/profile_user'); ?>">Profile</a>
-                                    </div>
-                                    <div style="padding: 10px;" class="pull-right">
-                                        <a class="btn btn-danger btn-flat" href="<?php echo site_url('proses/keluar_user'); ?>">Sign out</a>
-                                    </div>
-                                </li>
+                        <a class="btnav dropdown-toggle navbar-btn" href="#" data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span><?php echo $this->session->userdata('login_user')['username_user'];?> <i class="caret"></i></span>
+                        </a>
+                        <ul style="width: 280px;" class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header bg-light-blue">
+                                <img src="<?php echo base_url('assets/img/photo/'.$this->session->userdata('login_user')['img_user']);?>" class="img-circle" alt="User Image">
+                                <?php //echo base_url('assets/img/photo/'.$this->session->userdata('login_user')['img_user']);?>
+                                <p>
+                                    <?php echo $this->session->userdata('login_user')['nama'];?><br>
+                                    <small><?php echo $this->session->userdata('login_user')['email'];?></small>
+                                </p>
+                            </li>
+                            <!-- Menu Body -->
+                            <li class="user-body">
+                                
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div style="padding: 10px;" class="pull-left">
+                                    <a class="btn btn-success btn-flat" href="<?php echo site_url('home/profile_user'); ?>">Profile</a>
+                                </div>
+                                <div style="padding: 10px;" class="pull-right">
+                                    <a class="btn btn-danger btn-flat" href="<?php echo site_url('proses/keluar_user'); ?>">Sign out</a>
+                                </div>
+                            </li>
 
-                            </ul>
-                        </li>
-                        <li>
-                        <div class="btnav">
-                            <a id="chart" style="color: white;" data-original-title="Popover on bottom" href="#chart" class="btn btn-large btn-link navbar-btn" data-toggle="popover" data-placement="bottom" data-content="<h4>Chart Keranjang</h4>" title=""><i class=" icon-shopping-cart"></i></a>
-                           
-                            
-                        </div>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="btnav dropdown-toggle navbar-btn" href="#" data-toggle="dropdown">
+                        <i class=" icon-shopping-cart"></i>
+                        </a>
+                        <ul style="width: 280px;" class="dropdown-menu">
+                            <!-- cart list -->
+                           <li><!-- start message -->
+                                <a href="#">
+                                    <div style="margin-top: 10px;" class="pull-left">
+                                        <img class="img-rounded" style="padding: 6px; max-width: 60px;" src="http://localhost/Acer/doc/themes/public/img/produk/thumbnail-1.jpg">
+                                    </div>
+                                    <h5>Kentang Kucing<small><i class="fa fa-clock-o"></i>(2pcs)</small><br>
+                                        <small><i class="fa fa-clock-o"></i>Rp.200.000.000</small>
+                                    </h5>
+                                    
+                                </a><hr style="padding: 0px; margin: 0px; border: 0.1px solid grey;">
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div style="padding: 10px;" class="pull-right">
+                                    <a class="btn btn-primary btn-flat" href="<?php echo site_url('cart_control/checkout'); ?>">Detail / Check out</a>
+                                </div>
+                            </li>
+
+                        </ul>
                     </li>   
 
                     <?php  } else { ?>
                     <li>
                         <div class="btnav">
-                            <a href="#myModal" role="button" class="btn btn-large btn-success navbar-btn" data-toggle="modal">Login / Daftar</a>   
+                            <a href="#myModal" role="button" class="btn btn-large btn-success navbar-btn" data-toggle="modal">Login / Register</a>   
                               
                             
                            <!--  <a style="color: white;" class="btn btn-large btn-link navbar-btn" href="#"><i class=" icon-shopping-cart"></i></a>

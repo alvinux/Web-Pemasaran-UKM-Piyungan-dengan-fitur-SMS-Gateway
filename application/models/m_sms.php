@@ -62,7 +62,7 @@ class M_sms extends CI_Model
     //check jumlah barang berdasarkan pin
     public function cjp($pin,$id,$SenderNumber){
         //check jumlah
-      $params = array($pin, $SenderNumber);
+        $params = array($pin, $SenderNumber);//memasukkan fild inputan sql ke array params
         $sql = "SELECT id_produk FROM data_produk
         INNER JOIN data_user ON data_user.id_user = data_produk.penjual_id
         WHERE data_user.pin = ? AND data_user.telpon = ?";
@@ -83,13 +83,45 @@ class M_sms extends CI_Model
           );
         return $this->m_sms->sendReply($data);//insert to outbox table
         //end of balas sms
-    } //check jumlah barang berdasarkan pin
-    public function chp($kpr,$pin,$id){
-        //check jumlah
-        $sql = "SELECT id_produk FROM data_produk
+    } 
+
+
+
+    //Format SMS 3 SUKU
+    //check harga produk
+    public function chp($pin,$id,$SenderNumber,$kpr){
+        //check harga
+      $params = array($pin, $SenderNumber,$kpr);
+        $sql = "SELECT harga_produk FROM data_produk
         INNER JOIN data_user ON data_user.id_user = data_produk.penjual_id
-        WHERE data_user.pin = ?";
-        $query = $this->db->query($sql,$pin);
+        WHERE data_user.pin = ? AND data_user.telpon = ? AND data_produk.id_produk = ?";
+        $query = $this->db->query($sql,$params);
+        if($query->num_rows()>0){//produk ditemukan
+          $reply = 'jumlah produk saat ini '.$query->num_rows();
+        }else{//produk ditemukan
+          $reply = 'maaf produk tidak ditemukan';
+        }
+        echo $reply;
+        //end of jumlah produk
+        $this->m_sms->updateStatusInbox($id);//update status inbox[worked]
+        //balas sms
+        $inboxDet = $this->m_sms->inboxDetailById($id);//get detail inbox
+        $data = array(
+          'TextDecoded'=>$reply,
+          'DestinationNumber'=>$inboxDet['SenderNumber'],
+          );
+        return $this->m_sms->sendReply($data);//insert to outbox table
+        //end of balas sms
+    } 
+
+    //check Stok produk
+    public function CSTP($pin,$id,$SenderNumber,$kpr){
+        //check harga
+      $params = array($pin, $SenderNumber,$kpr);
+        $sql = "SELECT stok_produk FROM data_produk
+        INNER JOIN data_user ON data_user.id_user = data_produk.penjual_id
+        WHERE data_user.pin = ? AND data_user.telpon = ? AND data_produk.id_produk = ?";
+        $query = $this->db->query($sql,$params);
         if($query->num_rows()>0){//produk ditemukan
           $reply = 'jumlah produk saat ini '.$query->num_rows();
         }else{//produk ditemukan
@@ -107,6 +139,29 @@ class M_sms extends CI_Model
         return $this->m_sms->sendReply($data);//insert to outbox table
         //end of balas sms
     }
+
+
+
+
+
+
+    //format sms salah
+    public function salah($pin,$id,$SenderNumber){
+      $reply = 'Maaf Format SMS Belum benar, Silahkan cek kembali format sms anda';
+      $params = array($pin,$SenderNumber);
+       $this->m_sms->updateStatusInbox($id);//update status inbox[worked]
+        //balas sms
+        $inboxDet = $this->m_sms->inboxDetailById($id);//get detail inbox
+        $data = array(
+          'TextDecoded'=>$reply,
+          'DestinationNumber'=>$inboxDet['SenderNumber'],
+          );
+        return $this->m_sms->sendReply($data);//insert to outbox table
+    }
+
+
+
+
     ////////////////////
     // ALL ABOUT OUTBOX
     ////////////////////

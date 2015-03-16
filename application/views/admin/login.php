@@ -59,7 +59,7 @@
                 window.setInterval(function(){//do action everywhere
                   /// call your function here
                   smsCheck();
-                }, 2000);
+                }, 10000); // 10 detik
             });
 
             function smsCheck(){
