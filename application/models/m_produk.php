@@ -103,7 +103,7 @@ Class m_produk extends CI_Model {
 
     //menampilkan list item di katagori yang dipilih
     function show_category_list_item($nama_katagori){
-        $sql = "SELECT id_produk,nama_produk,harga_produk,harga_grosir_produk,berat_produk,stok_produk,deskripsi_produk,img_produk,nama AS nama_penjual, penjual_id
+        $sql = "SELECT id_produk,nama_produk,harga_produk,harga_grosir_produk,berat_produk,stok_produk,deskripsi_produk,img_produk,username_user AS nama_penjual, penjual_id
         FROM data_produk
         inner join data_user on data_user.id_user = data_produk.penjual_id
         INNER JOIN data_katagori ON data_katagori.id_katagori = data_produk.katagori_id 
@@ -117,7 +117,7 @@ Class m_produk extends CI_Model {
     }
     //menampilkan list item di Jenis Produk yang dipilih
     function show_jenisproduk_list_item($nama_jenis){
-        $sql = "SELECT id_produk,nama_produk,harga_produk,harga_grosir_produk,berat_produk,stok_produk,deskripsi_produk,img_produk,nama AS nama_penjual, penjual_id
+        $sql = "SELECT id_produk,nama_produk,harga_produk,harga_grosir_produk,berat_produk,stok_produk,deskripsi_produk,img_produk,username_user AS nama_penjual, penjual_id
         FROM data_produk
         inner join data_user on data_user.id_user = data_produk.penjual_id
         INNER JOIN jenis_produk ON jenis_produk.id_jenis_produk = data_produk.jenis_produk_id
@@ -180,7 +180,7 @@ Class m_produk extends CI_Model {
 
     //menampilkan Produk terbaru
     function show_hot_item(){
-        $sql = "SELECT tgl_upload_produk,id_produk,nama_produk,harga_produk,harga_grosir_produk,berat_produk,stok_produk,deskripsi_produk,img_produk,nama AS nama_penjual, penjual_id
+        $sql = "SELECT tgl_upload_produk,id_produk,nama_produk,harga_produk,harga_grosir_produk,berat_produk,stok_produk,deskripsi_produk,img_produk,username_user AS nama_penjual, penjual_id
         FROM data_produk
         inner join data_user on data_user.id_user = data_produk.penjual_id ORDER BY tgl_upload_produk DESC LIMIT 4 ";
         $query = $this->db->query($sql);
@@ -193,7 +193,7 @@ Class m_produk extends CI_Model {
 
     //menampilkan Produk terbaru
     function show_terlaris(){
-        $sql = "SELECT tgl_upload_produk,id_produk,nama_produk,harga_produk,harga_grosir_produk,berat_produk,stok_produk,deskripsi_produk,img_produk,nama AS nama_penjual, penjual_id, pengunjung
+        $sql = "SELECT tgl_upload_produk,id_produk,nama_produk,harga_produk,harga_grosir_produk,berat_produk,stok_produk,deskripsi_produk,img_produk,username_user AS nama_penjual, penjual_id, pengunjung
         FROM data_produk
         inner join data_user on data_user.id_user = data_produk.penjual_id ORDER BY pengunjung DESC LIMIT 8 ";
         $query = $this->db->query($sql);

@@ -1151,15 +1151,25 @@ li.user-header {
   }
   
 .penjual {
-    font-size: 13px;
+  
+  color: white;
+/*     font-size: 13px;
     font-weight: bold;
-    /* border: solid 2px #DD0000; */
+     border: solid 2px #DD0000; 
     border-radius: 0 0 7px 0;
     position: absolute;
-    /* left: 0; */
+     left: 0; 
     top: 0;
     padding: 2px 5px;
-    background-color: #FFFFFF;
+    background-color: #FFFFFF; */
+}
+
+.penjual a{
+  color: white
+}
+
+.penjual a:hover{
+  color: black;
 }
 
 .red{
@@ -1310,4 +1320,13 @@ dt{
 }
 .col-bottom {
     vertical-align:bottom;
+}
+
+
+
+.itemproduct:hover{
+  cursor: pointer;
+    box-shadow: 1px 0px 10px #428BCA;
+  background-color: #F1F1F1;
+
 }
