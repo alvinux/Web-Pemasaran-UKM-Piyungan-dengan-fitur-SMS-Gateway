@@ -34,7 +34,7 @@
 				        <thead>
 				          <tr>
 				            <th><span class="glyphicon glyphicon-user"></span></th>
-				            <th><?php echo $row['nama']; ?></th>
+				            <th><a href="<?php echo base_url('home/detail_penjual/'.$row['penjual_id']); ?>"><?php echo $row['nama']; ?></a></th>
 				          </tr>
 				        </thead>
 				        <tbody>
@@ -144,7 +144,7 @@
 				<div class="panel">
 					<div class="tabbable tabs-below">
 						<div id="myTabContent" class="tab-content">
-							<div class="tab-pane fade active in" id="home2">
+							<div class="tab-pane fade active in" id="img1">
 								<div class="portfolio-item"><!------Thumnail Produk-------->
 									<div class="item-inner" style="margin:0;">
 										<img class="img-responsive" src="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" alt="">
@@ -154,9 +154,29 @@
 									</div>
 								</div><!---/thumbnail produk-->
 							</div>
-							<div class="tab-pane fade" id="profile2">
+							<div class="tab-pane fade" id="img2">
 								<div class="portfolio-item"><!------Thumnail Produk-------->
-									<div class="item-inner">
+									<div class="item-inner" style="margin:0;">
+										<img class="img-responsive" src="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" alt="">
+										<div class="overlay">
+											<a class="preview btn btn-danger" title="<?php echo $row['nama_produk']; ?>" href="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+										</div>
+									</div>
+								</div><!---/thumbnail produk-->
+							</div>
+							<div class="tab-pane fade" id="img3">
+								<div class="portfolio-item"><!------Thumnail Produk-------->
+									<div class="item-inner" style="margin:0;">
+										<img class="img-responsive" src="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" alt="">
+										<div class="overlay">
+											<a class="preview btn btn-danger" title="<?php echo $row['nama_produk']; ?>" href="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+										</div>
+									</div>
+								</div><!---/thumbnail produk-->
+							</div>
+							<div class="tab-pane fade" id="img4">
+								<div class="portfolio-item"><!------Thumnail Produk-------->
+									<div class="item-inner" style="margin:0;">
 										<img class="img-responsive" src="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" alt="">
 										<div class="overlay">
 											<a class="preview btn btn-danger" title="<?php echo $row['nama_produk']; ?>" href="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
@@ -166,8 +186,26 @@
 							</div>
 						</div>
 						<ul id="myTab2" class="nav nav-tabs nav-justified">
-							<li class="active"><a href="#home2" data-toggle="tab"><img class="img-responsive" style="max-width:100%" src="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" alt=""></a></li>
-							<li><a href="#profile2" data-toggle="tab"><img class="img-responsive" style="max-width:100%" src="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" alt=""></a></li>
+							<li class="active">
+								<a href="#img1" data-toggle="tab">
+									<img class="img-responsive" style="max-width:100%" src="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" alt="">
+								</a>
+							</li>
+							<li>
+								<a href="#img2" data-toggle="tab">
+									<img class="img-responsive" style="max-width:100%" src="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" alt="">
+								</a>
+							</li>
+							<li>
+								<a href="#img3" data-toggle="tab">
+									<img class="img-responsive" style="max-width:100%" src="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" alt="">
+								</a>
+							</li>
+							<li>
+								<a href="#img4" data-toggle="tab">
+									<img class="img-responsive" style="max-width:100%" src="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" alt="">
+								</a>
+							</li>
 							
 						</ul>
 					</div>
@@ -216,13 +254,13 @@
 				<div class="blog-item">
 					<div class="blog-content">
 						<h3>Deskripsi Produk</h3>
-				<div class="entry-meta">
-					<!-- <span><i class="icon-user"></i> <a href="#">John</a></span>
-					<span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span> -->
-					<span><i class="icon-calendar"></i> <?php echo date('d F, Y - H:i', strtotime($row['tgl_upload_produk'])); ?></span>
-					<span><i class="icon-comment"></i> <a href="blog-item.html#comments">3 Comments</a></span>
-				</div>
-				<p class="lead"><?php echo $row['deskripsi_produk']; ?>.</p>
+						<div class="entry-meta">
+							<!-- <span><i class="icon-user"></i> <a href="#">John</a></span>
+							<span><i class="icon-folder-close"></i> <a href="#">Bootstrap</a></span> -->
+							<span><i class="icon-calendar"></i> <?php echo date('d F, Y - H:i', strtotime($row['tgl_upload_produk'])); ?></span>
+							<span><i class="icon-comment"></i> <a href="blog-item.html#comments">3 Comments</a></span>
+						</div>
+						<p class="lead"><?php echo $row['deskripsi_produk']; ?>.</p>
 
 				<!-- <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p> -->
 
@@ -266,9 +304,9 @@
 										<div class="well">
 											<div class="media-heading">
 												<strong><?php echo $testi['nama']; ?></strong>&nbsp; <small><?php echo date('d F, Y - H:i', strtotime($testi['waktu'])); ?></small>
-												<a class="pull-right" href="#"><i class="icon-repeat"></i> Reply</a>
 											</div>
 											<p><?php echo $testi['pesan']; ?></p>
+											<a class="pull-right" href="#"><i class="icon-repeat"></i> Reply</a>
 										</div><hr>
 									</div>
 								</div><!--/.media-->

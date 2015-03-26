@@ -86,10 +86,10 @@
 				</div><!------/Alamat-------------------------->
 				<!---Povinsi-->
 			<!---Povinsi-->
-				<div class="form-group">
+				<div class="form-group" style="<?php if ($row['status'] === 'penjual') { echo 'display:none;'; } else { echo ''; }//start if stok=0 ?>">
 					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="hp">Provinsi</label>
 					<div class="col-sm-8">
-						<select onchange="return $('#kecamatan').html('');" id="provinsi" name="provinsi" class="form-control" <?php if ($row['status'] === 'penjual') { echo 'disabled="disabled"'; } else { echo ''; }//start if stok=0 ?>>
+						<select onchange="return $('#kecamatan').html('');" id="provinsi" name="provinsi" class="form-control">
 							<option value="" selected="1">Pilih Provinsi</option>
 							<?php foreach ($provinsi as $rowi) { ?>
 							<option value="<?php echo $rowi->id_provinsi; ?>"><?php echo $rowi->provinsi; ?></option>
@@ -99,7 +99,7 @@
 					<label class="col-md-12 control-label text-danger"><?php echo form_error('provinsi'); ?></label>
 				</div>
 
-				<div id="kabupaten">
+				<div id="kabupaten" style="<?php if ($row['status'] === 'penjual') { echo 'display:none;'; } else { echo ''; }//start if stok=0 ?>">
 					<div class="form-group">
 						<label for="inputProvinsi" class="col-md-4 control-label">Kabupaten / Kota</label>
 						<div class="col-md-6">
@@ -114,7 +114,7 @@
 					</div>
 				</div>
 
-				<div id="kecamatan">
+				<div id="kecamatan" style="<?php if ($row['status'] === 'penjual') { echo 'display:none;'; } else { echo ''; }//start if stok=0 ?>">
 					<div class="form-group">
 						<label for="inputPassword3" class="col-md-4 control-label">Kecamatan</label>
 						<div class="col-md-6">
@@ -132,7 +132,7 @@
 				<div class="form-group"><!---Kodepos------------------------>
 					<label style="text-align: left;" class="col-sm-4 control-label text-left" for="kodepos">Kode Pos</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="formreg" name="kode_pos" value="<?php echo $row['kode_pos']; ?>" type="text"  <?php if ($row['status'] === 'penjual') { echo 'disabled="disabled"'; } else { echo ''; }//start if stok=0 ?>>
+						<input class="form-control" id="formreg" name="kode_pos" value="<?php echo $row['kode_pos']; ?>" type="text" <?php if ($row['status'] === 'penjual') { echo 'disabled="disabled"'; } else { echo ''; }//start if stok=0 ?>>
 					</div>
 				</div><!------/Kodepos------------>
 				<div class="form-group"><!---Password utk ubahdata------------------------>
