@@ -125,6 +125,7 @@ class Proses extends CI_Controller {
 	}
 	public function keluar_user() {
 		$this->session->unset_userdata('login_user');
+		$this->cart->destroy();
 		redirect('home');
 	}
 

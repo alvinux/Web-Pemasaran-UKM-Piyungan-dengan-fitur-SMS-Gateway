@@ -52,10 +52,6 @@
 				    </div>
 
 
-
-
-		
-
 				<!-- span class="col-sm-4"><b class="topkosong"><small>Nama Penjual</small></b></span>:
 				<span class="col-sm-7"><b class="topkosong"></b></span> -->
 			</div><!--/.detail-->
@@ -145,7 +141,7 @@
 					<div class="tabbable tabs-below">
 						<div id="myTabContent" class="tab-content">
 							<div class="tab-pane fade active in" id="img1">
-								<div class="portfolio-item"><!------Thumnail Produk-------->
+								<div class="portfolio-item"><!------Thumbnail Produk-------->
 									<div class="item-inner" style="margin:0;">
 										<img class="img-responsive" src="<?php echo base_url('doc/themes/public/img/produk/'.$row['img_produk']); ?>" alt="">
 										<div class="overlay">
@@ -215,22 +211,24 @@
 
 
 			</div><!--/Thumbnail produk &detail------->
-			
+			<?php echo form_open(site_url('cart_control/add_cart')); ?>
 			<div class="col-sm-6"><!----Detail produk-------->
-				<form action="#" method="post" accept-charset="utf-8">            
+				<div action="#" method="post" accept-charset="utf-8">
 					<div class="sum-item">	
 						<b><p class="bold"><span class="row col-md-5">Stok</span> : <span><?php echo $row['stok_produk']; ?></span></p>
 						<p class="bold"><span class="row col-md-5">Berat</span> : <span><?php echo $row['berat_produk']; ?> Kilo Gram</span></p>
 						<p class="bold"><span class="row col-md-5"><b>Harga </b></span> : <span><b class="red">Rp <?php echo number_format ($row['harga_produk']).'.00'; ?></b></span></p>
-						<p class="bold"><span class="row col-md-5"><small>Harga Grosir</small></span> : <span><small>Rp <?php echo number_format ($row['harga_grosir_produk']).'.00'; ?></small></span></p>
+<!--						<p class="bold"><span class="row col-md-5"><small>Harga Grosir</small></span> : <span><small>Rp --><?php //echo number_format ($row['harga_grosir_produk']).'.00'; ?><!--</small></span></p>-->
 						<p class="bold">
 							<div>
 								<span class="row col-md-5">Tentukan Jumlah Barang</span> 
 								<div class="col-md-4">
-									<input type="number" class="form-control" />
+									<input type="number" class="form-control" name="jumlah" max="<?php echo $row['stok_produk']?>" value="1" />
 								</div>
 							</div>
 						</p></b>
+						<input type="hidden" name="harga" value="<?php echo $row['harga_produk'];?>"><!-- harga -->
+						<input type="hidden" name="id_produk" value="<?php echo $row['id_produk'];?>"><!-- id produk -->
 						<br><br>
 						<!-- <h5 class="example-title">Tentukan Jumlah Barang <span>
 						<div class="row">
@@ -241,13 +239,16 @@
 						</span>
 						</h5> -->
 					</div>
-					<input name="id_barang" value="13" type="hidden"><!-- id barang -->
 					<br>
 					<div class="mg-b-20">
-						<button type="submit" class="btn btn-primary btn-lg btn-block bold <?php if ($row['stok_produk'][0]) { echo ''; } else { echo 'disabled'; }//start if stok=0 ?>"><span class="glyphicon glyphicon-shopping-cart"></span> Beli</button>
+						<button type="submit" class="btn btn-primary btn-lg btn-block bold <?php if ($row['stok_produk'][0]) { echo ''; } else { echo 'disabled'; }//start if stok=0 ?>">
+							<span class="glyphicon glyphicon-shopping-cart">
+							</span> Beli
+						</button>
 					</div>
-				</form>
+				</div>
 			</div><!--detail produk-->
+			</form>
 			
 			
 			<div class="blog col-sm-12">

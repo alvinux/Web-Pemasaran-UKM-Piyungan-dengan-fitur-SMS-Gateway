@@ -292,52 +292,61 @@ class Admin extends CI_Controller {
 								echo $i['SenderNumber'];
 								break;
 							}
-						default:
+						case 'CLKP'://check List Kode produk
+						$pin = $explodeInbox[1];
+						$SenderNumber = $i['SenderNumber'];
 							if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
-								return $this->m_sms->salah($pin,$i['ID'],$SenderNumber);//pin and id
+								return $this->m_sms->clkp($pin,$i['ID'],$SenderNumber);//pin and id
 								break;
 							} else {
 								echo $i['SenderNumber'];
 								break;
 							}
-						break;
-						}
-						
-					}else if($totalIndex == 3){
-						switch ($explodeInbox[0]) {
-							case 'CHP'://check jumlah produk
-								$kpr = $explodeInbox[1];
-								$pin = $explodeInbox[2];
-									if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
-									return $this->m_sms->chp($pin,$i['ID'],$SenderNumber,$kpr);//pin and id
-									break;
-								} else {
-									echo $i['SenderNumber'];
-									break;
-								}
-
-
-								case 'CSTP'://check Stok produk
-								$kpr = $explodeInbox[1];
-								$pin = $explodeInbox[2];
-									if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
-									return $this->m_sms->cstp($pin,$i['ID'],$SenderNumber,$kpr);//pin and id
-									break;
-								} else {
-									echo $i['SenderNumber'];
-									break;
-								}
-
-							default:
-									if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
-										return $this->m_sms->salah($pin,$i['ID'],$SenderNumber);//pin and id
-										break;
-									} else {
-										echo $i['SenderNumber'];
-										break;
-									}
+					default:
+						if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
+							return $this->m_sms->salah($pin,$i['ID'],$SenderNumber);//pin and id
 							break;
+						} else {
+							echo $i['SenderNumber'];
+							break;
+						}
+					break;
+					}
+						
+				} else if($totalIndex == 3){
+					switch ($explodeInbox[0]) {
+						case 'CHP'://check jumlah produk
+							$kpr = $explodeInbox[1];
+							$pin = $explodeInbox[2];
+							$SenderNumber = $i['SenderNumber'];
+							if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
+								return $this->m_sms->chp($pin,$i['ID'],$SenderNumber,$kpr);//pin and id
+								break;
+							} else {
+								echo $i['SenderNumber'];
+								break;
 							}
+						case 'CSTP'://check Stok produk
+							$kpr = $explodeInbox[1];
+							$pin = $explodeInbox[2];
+							$SenderNumber = $i['SenderNumber'];
+							if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
+								return $this->m_sms->cstp($pin,$i['ID'],$SenderNumber,$kpr);//pin and id
+								break;
+							} else {
+								echo $i['SenderNumber'];
+								break;
+							}
+					default:
+						if (!empty($this->m_user->tlpuser($i['SenderNumber']))) {
+							return $this->m_sms->salah($pin,$i['ID'],$SenderNumber);//pin and id
+							break;
+						} else {
+							echo $i['SenderNumber'];
+							break;
+						}
+					break;
+					}
 
 
 					}else if($totalIndex == 4){

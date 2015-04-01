@@ -15,6 +15,8 @@ class Cart_control extends Base {
 
 	//tambah ke cart
 	public function add_cart(){
+
+		if ($this->session->userdata('login_user')) {
 		$id_produk = $_POST['id_produk'];
 		$harga = $_POST['harga'];
 		$jumlah = $_POST['jumlah'];
@@ -23,70 +25,86 @@ class Cart_control extends Base {
 		$queryprod = $this->db->get('data_produk');
 		$queryprod = $queryprod->row_array();
 		//instanisasi
-		$produk = $querybarang['data_produk'];
-		$harga_asli = $querybarang['harga'];//harga asli
+		$produk = $queryprod['nama_produk'];
+		$harga_asli = $queryprod['harga_produk'];//harga asli
 		$total_harga_asli = $harga_asli * $jumlah;
-		$berat = $querybarang['berat'];//berat barang perunit
+		$berat = $queryprod['berat_produk'];//berat barang perunit
 		$total_berat = $berat * $jumlah;
+		$pic = $queryprod['img_produk'];
+		$id_penjual = $queryprod['penjual_id'];
 
 		//memasukan ke dalam cart
 		$insert = array(
 			'id'=>$id_produk,
+			'id_penjual'=>$id_penjual,
 			'qty'=>$jumlah,
 			'price'=>$harga,
 			'name'=>$produk,
 			'total_harga_asli'=>$total_harga_asli,
 			'total_berat'=>$total_berat,		
+			'pic'=>$pic,
 			);
 		//eksusi ke dalam cart
 		$this->cart->insert($insert);
 		//echo $status;
 		//kembali ke halaman sebelumnya
 		redirect($this->agent->referrer());
-	}
-	//menambah barang dari tombol beli
-	public function add_cart_from_home(){
-		$id_produk = $_POST['id_produk'];
-		//cek di cart apakah sudah ada
-		//mencari id barang di array cart
-		$notfound = true;
-		foreach($this->cart->contents() as $item):
-			if($item['id'] == $id_barang){//jika barang sudah di cart
-				$jumlah_sekarang = $item['qty'] + 1;
-				//melakukan update di cart
-				$data = array(
-					'rowid'=>$item['rowid'],
-					'qty'=>$jumlah_sekarang,
-					);
-				//update cart				
-				$notfound = false;
-			}
-			endforeach;
-			//jika barang belum di cart
-			if($notfound){
-				//deskripsi barang yang harus diinsert
-				$jumlah = 1;
-				$detail_produk = $this->m_produk->get_produk_by_id($id_produk);
-				$barang = $detail_barang['barang'];
-				$harga = $detail_produk['harga'] -  $detail_produk['grosir'];
-				$total_harga_asli = $detail_produk['harga'];
-				$total_berat = $detail_barang['berat'];
-				//bikin cart baru
-				$insert = array(
-					'id'=>$id_produk,
-					'qty'=>$jumlah,
-					'price'=>$harga,
-					'name'=>$produk,
-					'total_harga_asli'=>$total_harga_asli,
-					'total_berat'=>$total_berat,		
-					);
-				$this->cart->insert($insert);
-			}else{//jika barang sudah ditemukan
-				$this->cart->update($data);
-			}
-			//kembali ke halaman sebelumnya
-			redirect($this->agent->referrer());
+
+
+		} else {
+			echo '<script>';
+			echo "alert('Silahkan Login atau Daftar terlebih dahulu');";
+			echo "window.location='../proses/proses_daftar_user'";
+			echo '</script>';
 		}
+		
+	}
+//	//menambah barang dari tombol beli
+//	public function add_cart_from_home(){
+//		$id_produk = $_POST['id_produk'];
+//		//cek di cart apakah sudah ada
+//		//mencari id barang di array cart
+//		$notfound = true;
+//		foreach($this->cart->contents() as $item):
+//			if($item['id'] == $id_barang){//jika barang sudah di cart
+//				$jumlah_sekarang = $item['qty'] + 1;
+//				//melakukan update di cart
+//				$data = array(
+//					'rowid'=>$item['rowid'],
+//					'qty'=>$jumlah_sekarang,
+//					);
+//				//update cart
+//				$notfound = false;
+//			}
+//			endforeach;
+//			//jika barang belum di cart
+//			if($notfound){
+//				//deskripsi barang yang harus diinsert
+//				$jumlah = 1;
+//				$detail_produk = $this->m_produk->get_produk_by_id($id_produk);
+//				$barang = $detail_barang['barang'];
+//				$harga = $detail_produk['harga'] -  $detail_produk['grosir'];
+//				$total_harga_asli = $detail_produk['harga'];
+//				$total_berat = $detail_barang['berat'];
+//				//bikin cart baru
+//				$insert = array(
+//					'id'=>$id_produk,
+//					'qty'=>$jumlah,
+//					'price'=>$harga,
+//					'name'=>$produk,
+//					'total_harga_asli'=>$total_harga_asli,
+//					'total_berat'=>$total_berat,
+//					);
+//				$this->cart->insert($insert);
+//			}else{//jika barang sudah ditemukan
+//				$this->cart->update($data);
+//			}
+//			//kembali ke halaman sebelumnya
+//			redirect($this->agent->referrer());
+//		}
+
+
+
 	//membersihkan item di cart
 		public function reset_cart(){
 			$this->cart->destroy();

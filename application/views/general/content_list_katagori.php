@@ -2,10 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="center gap">
+              <!--   <div class="center gap">
                     <h2>What we do</h2>
                     <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="row">

@@ -42,7 +42,7 @@
                     <li style="width: 10px; height: 1px;">
                         &nbsp;
                     </li>
-                    <?php if ($this->session->userdata('login_user')) {?>
+                    <?php if ($this->session->userdata('login_user')) {?> <!--Jika Statusnya login user atau tidak-->
                          <?php //echo $this->session->userdata('login_user');?>
                     <li class="btnav">
                         <a class="btnav dropdown-toggle navbar-btn" href="#" data-toggle="dropdown">
@@ -75,23 +75,42 @@
 
                         </ul>
                     </li>
+                    <?php if ($this->session->userdata('login_user')['status']  === 'penjual') {
+                        echo "";
+                    } else { ?> <!--Status Penjual atau tidak-->
                     <li>
                         <a class="btnav dropdown-toggle navbar-btn" href="#" data-toggle="dropdown">
                         <i class=" icon-shopping-cart"></i>
                         </a>
                         <ul style="width: 280px;" class="dropdown-menu">
                             <!-- cart list -->
-                           <li><!-- start message -->
-                                <a href="#">
+                        <?php if (empty($this->cart->contents())) {//start if tidak ada transaksi ?><!--Jika Cart isi atau kosong-->
+                            <li><!-- start message -->
+                                <h4 class="center">Keranjang masih kosong</h4>
+                            </li>
+                        <?php } else {?><!--Jika Cart isi atau kosong-->
+                            <?php
+                            $i=1;
+                            $total_berat = 0;
+                            $total_barang = 0;
+                            $total_ongkos = 0;
+                            foreach ($this->cart->contents() as $item) { ?>
+                            <li><!-- start message -->
+                                <a href="<?php echo base_url('home/detailproduk/' . $item['id']); ?>">
                                     <div style="margin-top: 10px;" class="pull-left">
-                                        <img class="img-rounded" style="padding: 6px; max-width: 60px;" src="http://localhost/Acer/doc/themes/public/img/produk/thumbnail-1.jpg">
+                                        <img class="img-rounded" style="padding: 6px; max-width: 60px;" src="<?php echo base_url('doc/themes/public/img/produk/'.$item['pic']); ?>">
                                     </div>
-                                    <h5>Kentang Kucing<small><i class="fa fa-clock-o"></i>(2pcs)</small><br>
-                                        <small><i class="fa fa-clock-o"></i>Rp.200.000.000</small>
+                                    <h5><?php echo $item['name'];?><small><i class="fa fa-clock-o"></i> (<?php echo $item['qty'];?> pcs)</small><br>
+                                        <small><i class="fa fa-clock-o"></i><?php echo 'Rp '.number_format($item['total_harga_asli']).',00';?></small>
                                     </h5>
                                     
-                                </a><hr style="padding: 0px; margin: 0px; border: 0.1px solid grey;">
+                                </a><hr style="padding: 0px; margin: 0px; border: 1px solid grey;">
                             </li>
+                            <?php
+                            $total_barang = $total_barang + $item['qty'];
+                            $total_berat = $total_berat + $item['total_berat'];
+                            $i++; } ?><!--/Cart List-->
+                        <?php } ?><!--Jika Cart isi atau kosong-->
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div style="padding: 10px;" class="pull-right">
@@ -101,20 +120,15 @@
 
                         </ul>
                     </li>   
+                    <?php } ?> <!--Status Penjual atau tidak-->
 
-                    <?php  } else { ?>
+                    <?php  } else { ?><!--Jika Statusnya login user atau tidak-->
                     <li>
                         <div class="btnav">
-                            <a href="#myModal" role="button" class="btn btn-large btn-success navbar-btn" data-toggle="modal">Login / Register</a>   
-                              
-                            
-                           <!--  <a style="color: white;" class="btn btn-large btn-link navbar-btn" href="#"><i class=" icon-shopping-cart"></i></a>
-                             -->
-                         
+                            <a href="#myModal" role="button" class="btn btn-large btn-success navbar-btn" data-toggle="modal">Login / Register</a>                            
                         </div>
-                    </li>                 
-                         
-                        <?php } ?>
+                    </li>   
+                    <?php } ?>
                 </ul>
                 <!--                <button class="btn btn-large btn-success navbar-btn navbar-right" data-toggle="modal" data-target="#myModal">Sign In</button>-->
             </div><!-- /.navbar-collapse -->

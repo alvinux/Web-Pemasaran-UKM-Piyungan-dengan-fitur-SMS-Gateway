@@ -15,16 +15,15 @@ class Home extends CI_Controller {
 	public function index()
 	{
 
+   		if ($this->session->userdata('login_user')['status'] === 'penjual') { redirect('home/profile_user'); } else 
+   		{ 
 			$data['banner'] = $this->m_content->banner();
 			// $config['base_url'] = site_url('home/index');
-//		if ($this->session->userdata('login_user')['status'] === 'penjual') { redirect('home/list_produk'); } else { 
 			$data['provinsi'] = $this->m_content->provinsi();
 			$data['title']= 'Selamat Datang';
 			$data['hotlist'] = $this->m_produk->show_hot_item();
 			$data['terlaris'] = $this->m_produk->show_terlaris();
-
-			// $data['datalist'] = array();
-// $data['datalist'] = array($hotlist);
+			// $data['datalist'] = array($hotlist);
 			//load View
 			$this->load->view('base/head', $data);
 			
@@ -41,7 +40,7 @@ class Home extends CI_Controller {
 			
 			
 			$this->load->view('base/tail');
-			// } 
+		} 
 	}
 	
 	public function katagori()
@@ -65,7 +64,6 @@ class Home extends CI_Controller {
 				$data['daftar_item'] = $this->m_produk->show_category_list_item($nama_katagori);
 			}
 
-			
 			$this->load->view('general/navbar');
 			$this->load->view('general/head_katagori');
 			$this->load->view('general/content_list_katagori', $data);
@@ -142,8 +140,6 @@ class Home extends CI_Controller {
 			$data['title']= 'Profile';
 			$data['biodata'] = $this->m_user->biodata();
 
-			
-			
 			$data['provinsi'] = $this->m_content->provinsi();
 			$data['kab_kota'] = $this->m_content->kab_kota($data['biodata']['id_provinsi']);
 			$data['kecamatan'] = $this->m_content->kecamatan($data['biodata']['id_kota']);
@@ -152,8 +148,11 @@ class Home extends CI_Controller {
 
 			$this->load->view('general/navbar');
 			$this->load->view('general/head_katagori');
-			$this->load->view('general/profile_user',$data);
-
+			if ($this->session->userdata('login_user')['status'] === 'pembeli') {
+				$this->load->view('general/profile_user',$data);
+			} else {
+				$this->load->view('general/profile_penjual',$data);
+			}
 			$this->load->view('general/bottom_menu');
 			$this->load->view('general/footer');
 			$this->load->view('general/modal/modal_login');
@@ -167,12 +166,12 @@ class Home extends CI_Controller {
 	}	
 	public function detail_penjual()
 	{	
-		if ($this->session->userdata('login_user')) {
+		if (!empty($this->uri->segment(3))) {
 			$data['provinsi'] = $this->m_content->provinsi();
 			$id_penjual = $this->uri->segment(3);
 			//mengambil session proses_masuk dan menyimpan session email
-			$session_data = $this->session->userdata('login_user');
-			$data['title']= 'Profile';
+			
+			$data['title']= 'Data Penjual';
 			$data['data_penjual'] = $this->m_user->data_penjual($id_penjual);
 			$data['produk_penjual'] = $this->m_produk->show_all_product_by_seller($id_penjual);
 

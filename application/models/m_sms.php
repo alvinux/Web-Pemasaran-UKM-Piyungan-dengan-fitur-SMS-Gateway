@@ -83,9 +83,41 @@ class M_sms extends CI_Model
           );
         return $this->m_sms->sendReply($data);//insert to outbox table
         //end of balas sms
+    }    
+
+    //Check List Kode produk berdasarkan id penjual dari no.hp
+    public function clkp($pin,$id,$SenderNumber){
+        //check jumlah
+        $params = array($pin, $SenderNumber);//memasukkan field inputan sql ke array params
+        $sql = "SELECT id_produk, nama_produk FROM data_produk
+        INNER JOIN data_user ON data_user.id_user = data_produk.penjual_id
+        WHERE data_user.pin = ? AND data_user.telpon = ?";
+        $query = $this->db->query($sql,$params);
+        if($query->num_rows()>0){//produk ditemukan
+            $reply1 = 'List Kode produk yang anda miliki adalah ';
+          foreach($query->result() as $row) { 
+            $reply2[] = '(Produk :'.$row->nama_produk.', id:'.$row->id_produk.') , ';
+          }
+            $reply = $reply1.implode("",$reply2);
+        }else{//produk ditemukan
+          $reply = 'maaf produk tidak ditemukan atau PIN Salah';
+        }
+        echo $reply ;
+        //print_r ($reply2) ;
+
+        //end of jumlah produk
+        $this->m_sms->updateStatusInbox($id);//update status inbox[worked]
+        //balas sms
+        $inboxDet = $this->m_sms->inboxDetailById($id);//get detail inbox
+        $data = array(
+          'TextDecoded'=>$reply,
+          'DestinationNumber'=>$inboxDet['SenderNumber'],
+          );
+        return $this->m_sms->sendReply($data);//insert to outbox table
+        //end of balas sms
     } 
 
-
+// SELECT `stok_produk` FROM `data_produk` inner join data_user on data_user.id_user = data_produk.penjual_id WHERE data_produk.id_produk = '1'
 
     //Format SMS 3 SUKU
     //check harga produk
@@ -97,12 +129,16 @@ class M_sms extends CI_Model
         WHERE data_user.pin = ? AND data_user.telpon = ? AND data_produk.id_produk = ?";
         $query = $this->db->query($sql,$params);
         if($query->num_rows()>0){//produk ditemukan
-          $reply = 'jumlah produk saat ini '.$query->num_rows();
+          foreach($query->result() as $row) {
+            $reply = 'harga produk dengan kode produk ('.$kpr.') saat ini Rp.'.number_format($row->harga_produk) . '';
+          }
         }else{//produk ditemukan
-          $reply = 'maaf produk tidak ditemukan';
+          $reply = 'Maaf produk tidak ditemukan';
         }
         echo $reply;
-        //end of jumlah produk
+        //print_r ($query->result());
+
+        //end of HARGA produk
         $this->m_sms->updateStatusInbox($id);//update status inbox[worked]
         //balas sms
         $inboxDet = $this->m_sms->inboxDetailById($id);//get detail inbox
@@ -116,19 +152,23 @@ class M_sms extends CI_Model
 
     //check Stok produk
     public function CSTP($pin,$id,$SenderNumber,$kpr){
-        //check harga
-      $params = array($pin, $SenderNumber,$kpr);
+        //check stok
+        $params = array($pin, $SenderNumber,$kpr);
         $sql = "SELECT stok_produk FROM data_produk
         INNER JOIN data_user ON data_user.id_user = data_produk.penjual_id
         WHERE data_user.pin = ? AND data_user.telpon = ? AND data_produk.id_produk = ?";
         $query = $this->db->query($sql,$params);
         if($query->num_rows()>0){//produk ditemukan
-          $reply = 'jumlah produk saat ini '.$query->num_rows();
+          foreach($query->result() as $row) {
+            $reply = 'Jumlah Stok produk dengan kode produk ('.$kpr.') adalah '.number_format($row->stok_produk) . '(pcs)';
+          }
         }else{//produk ditemukan
-          $reply = 'maaf produk tidak ditemukan';
+          $reply = 'Maaf produk tidak ditemukan';
         }
         echo $reply;
-        //end of jumlah produk
+        //print_r ($query->result());
+
+        //end of STOK produk
         $this->m_sms->updateStatusInbox($id);//update status inbox[worked]
         //balas sms
         $inboxDet = $this->m_sms->inboxDetailById($id);//get detail inbox

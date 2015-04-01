@@ -6,7 +6,7 @@
 		<div style="background-color: rgb(66, 139, 202); padding: 5px 10px; margin: 0px;" class="modal-header panel-heading">
 			<h6 style="margin: 0px; padding: 0px;" class="modal-title" id="myModalLabel">
 				<p class="penjual" style="padding-left: 0px; margin: 0px;">Penjual : 
-					<a href="<?php echo base_url('home/detail-penjual/'.$row['penjual_id']); ?>"><?php echo $row['nama_penjual']; ?>
+					<a href="<?php echo base_url('home/detail_penjual/'.$row['penjual_id']); ?>"><?php echo $row['nama_penjual']; ?>
 					</a>
 				</p>
 			</h6>

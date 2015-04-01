@@ -156,12 +156,13 @@ Class m_produk extends CI_Model {
         $query = $this->db->get('jenis_produk');
         return $query->result_array();
     }
-    //untuk edit status di modal daftar pesanan
-    function edit_status() {
-        $sql = "UPDATE transaksi SET status = 'Lunas' WHERE id_transaksi=8 ";
-        $query = $this->db->query($sql);
-        return $query->result_array();
-    }
+
+    // //untuk edit status di modal daftar pesanan
+    // function edit_status() {
+    //     $sql = "UPDATE transaksi SET status = 'Lunas' WHERE id_transaksi=8 ";
+    //     $query = $this->db->query($sql);
+    //     return $query->result_array();
+    // }
 
 
 
@@ -206,17 +207,16 @@ Class m_produk extends CI_Model {
 
       // menampilkan produk dari id penjual
     function show_all_product_by_seller($id_penjual){
-        $this->db->select('*');
-        $this->db->where('penjual_id',$id_penjual);
-        $query=$this->db->get('data_produk', 9);
-        if ($query->num_rows()>0){
-            return $query->result_array();    
-        } else {
+       $sql = "SELECT tgl_upload_produk,id_produk,nama_produk,harga_produk,harga_grosir_produk,berat_produk,stok_produk,deskripsi_produk,img_produk,username_user AS nama_penjual, penjual_id, pengunjung
+        FROM data_produk
+        inner join data_user on data_user.id_user = data_produk.penjual_id WHERE penjual_id = ? ORDER BY tgl_upload_produk DESC ";
+        $query = $this->db->query($sql,$id_penjual);
+        if($query->num_rows>0){
+            return $query->result_array();
+        }else{
             return array();
         }
     }
-
-
 
    function jml_konfirmasi()
     {
@@ -228,9 +228,6 @@ Class m_produk extends CI_Model {
 
 
     }  
-
-
-
 
 }
 ?>
