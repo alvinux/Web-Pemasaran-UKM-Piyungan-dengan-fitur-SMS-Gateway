@@ -17,14 +17,16 @@
                   <?php
                     $new = array();
                     $next = array();
-                    $n=1;foreach ($terlaris as $row):
-                    if($n<=4):
-                        array_push($new, $row);
-                    endif;
-                    if($n>4):
-                        array_push($next, $row);
-                    endif;
-                    $n++;endforeach;?>
+                    $n=1;
+                    foreach ($terlaris as $row):
+                      if($n<=4):
+                          array_push($new, $row);
+                      endif;
+                      if($n>4):
+                          array_push($next, $row);
+                      endif;
+                      $n++;
+                    endforeach;?>
 
                    <!--------Item Active---->
 

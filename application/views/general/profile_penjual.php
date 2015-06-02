@@ -1,5 +1,5 @@
-<?php $data['biodata'] = $this->m_user->biodata(); ?>
-<?php  $id_penjual = $this->session->userdata['login_user']['id_user']; ?>
+<?php $data['biodata'] = $biodata ?>
+<?php //$id_penjual = $this->session->userdata['login_user']['id_user']; ?>
 <?php $data['daftar_item'] = $this->m_produk->show_all_product_by_seller($id_penjual); ?>
 <section id="detail-profile" class="container">
 	<div class="row">
@@ -32,11 +32,11 @@
 	                <div class="tab-pane" id="tab_2-2">
 	                   	<h3>Daftar Produk Anda 
 	                   	<div class="pull-right">
-                        	<a class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Produk</a>
+                        	<a href="#tambahproduk" class="btn btn-success" data-toggle="modal"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Produk</a>
                     	</div>
                     	</h3>
 	            		<hr>
-	            			<?php $this->load->view('general/content_list_katagori', $data); ?>
+	            	      <?php $this->load->view('general/content_list_katagori', $data); ?>
 	                </div><!-- /.tab-pane -->
 	                <div class="tab-pane" id="tab_2-3">
 

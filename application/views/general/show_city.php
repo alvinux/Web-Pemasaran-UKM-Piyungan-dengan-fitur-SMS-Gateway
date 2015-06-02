@@ -3,8 +3,9 @@
     <div class="col-md-6">
         <!-- #kabupaten digunakan untuk menampilkan #kecamatan melalui ajax -->
         <select name="kabupaten" id="inputkabupaten" class="form-control">
+            <option value="" selected="1">Pilih Kabupaten/Kota</option>
             <?php foreach ($kab_kota as $row) { ?>
-            <option value="<?php echo $row->id_kab_kota; ?>"><?php echo $row->kab_kota; ?></option>
+            <option value="<?php echo $row->id_kota; ?>"><?php echo $row->kota; ?></option>
             <?php } ?>
         </select>
     </div>

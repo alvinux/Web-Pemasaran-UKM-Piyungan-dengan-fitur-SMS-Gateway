@@ -27,35 +27,35 @@
 <script>$('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'});
 
     $('#chart').popover({'html': 'true'});</script>
-
+<script> $("[data-toggle=popover]").popover();</script>
 
 <!-- #provinsi=nama id pada form select, #kabupaten=nama id pada form untuk menampilkan hasil, id_provinsi=kolom pada tabel provinsi, url=untuk memanggil form select -->
 <script type="text/javascript">
     $("#provinsi").change(function(){
-        var id_provinsi = {id_provinsi:$("#provinsi").val()};
+        var id_prov = {id_prov:$("#provinsi").val()};
         $.ajax({
             type: "POST",
             url : "<?php echo site_url('home/pilih_kabupaten'); ?>",
-            data: id_provinsi,
+            data: id_prov,
             success: function(msg){
                 $('#kabupaten').html(msg);
             }
         });
     });
 </script>
-<script type="text/javascript">
+ <script type="text/javascript">
     $("#kabupaten").change(function(){
         var id_kab_kota = $('#inputkabupaten').val();//memasukan value select id kabupaten
         $.ajax({
             type: "POST",
             url : "<?php echo site_url('home/pilih_kecamatan'); ?>",
-            data: {id_kab_kota:id_kab_kota},//request yang dikirimkan ke response
+            // data: {id_kab_kota:id_kab_kota},//request yang dikirimkan ke response
             success: function(msg){
                 $('#kecamatan').html(msg);
             }
         });
     });
-</script>
+ </script>
 
 
     <script>$("#ellipsis").ellipsis();</script>

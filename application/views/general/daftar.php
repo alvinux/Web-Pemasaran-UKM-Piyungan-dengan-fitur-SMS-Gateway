@@ -62,7 +62,7 @@
 						 			<select id="provinsi" name="provinsi" class="form-control">
 						 				<option value="" selected="1">Pilih Provinsi</option>
 						 				<?php foreach ($provinsi as $row) { ?>
-						 				<option value="<?php echo $row->id_provinsi; ?>"><?php echo $row->provinsi; ?></option>
+						 				<option value="<?php echo $row->id_prov; ?>"><?php echo $row->provinsi; ?></option>
 						 				<?php } ?>
 						 			</select>
 						 		</div>
@@ -72,9 +72,11 @@
 						 	<div id="kabupaten">
 
 						 	</div>
+						 		<label class="col-md-12 control-label text-danger"><?php echo form_error('kabupaten'); ?></label>
 						 	<div id="kecamatan">
 
 						 	</div>
+						 		<label class="col-md-12 control-label text-danger"><?php echo form_error('kecamatan'); ?></label>
 
 						 	<div class="form-group">
 						 		<label for="inputEmail3" class="col-md-4 control-label">Alamat</label>

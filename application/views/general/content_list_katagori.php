@@ -9,20 +9,15 @@
             </div>
         </div>
         <div class="row">
-
-
-            <?php if (!empty($daftar_item)) { ?>
-              <?php 
-                   $data['datalist'] = $daftar_item;
-                   $this->load->view('general/thumbnail_produk', $data);
-                   ?>
-        
+        <?php if (!empty($daftar_item)) { ?>
+          <?php 
+               $data['datalist'] = $daftar_item;
+               $this->load->view('general/thumbnail_produk', $data);
+               ?>
+    
         <?php } else { ?>
                  <h2>Produk Kosong..</h2>
         <?php } ?>
-
-
-
         </div><!--/.row-->
 
         <hr>

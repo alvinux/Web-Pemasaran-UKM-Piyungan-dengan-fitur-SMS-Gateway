@@ -58,7 +58,7 @@
                                     <select id="provinsi" name="provinsi" class="form-control">
                                         <option value="" selected="1">Pilih Provinsi</option>
                                         <?php foreach ($provinsi as $row) { ?>
-                                        <option value="<?php echo $row->id_provinsi; ?>"><?php echo $row->provinsi; ?></option>
+                                        <option value="<?php echo $row->id_prov; ?>"><?php echo $row->provinsi; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

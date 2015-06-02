@@ -12,7 +12,7 @@
 			</h6>
 		</div>
 		<!--Gambar Thumbnail Produk-->
-		<img class="img-rounded" style="padding: 6px;" src="<?php echo base_url('doc/themes/public/img/produk/' . $row['img_produk']); ?>">
+		<img class="img-rounded" style="padding: 6px; height: 200px;" src="<?php echo base_url('doc/themes/public/img/produk/' . $row['img_produk']); ?>">
 		<!-- <span class="penjual" style="max-width: 200px;	">
 			<small class="col-xs-12 ellipsis" style="padding-left: 0;">Penjual : 
 				<a href="#"><?php echo $row['nama_penjual']; ?></a>

@@ -45,11 +45,36 @@ Class M_user extends CI_Model {
         $this->db->insert('data_user', $this);
     }
 
+    function daftar_penjual() {
+        $now = date("Y-m-d H:i:s");
+        // ->nama=nama kolom db dan 'nama'=nama field form
+        $this->nama = $this->input->post('nama');
+        $this->username_user = $this->input->post('username');
+        $this->email = $this->input->post('email');
+
+        $this->img_user = 'default.jpg';
+        
+        $this->pass_user = $this->input->post('password');
+        $this->telpon = $this->input->post('telepon');
+        $this->id_provinsi = $this->input->post('provinsi');
+        $this->id_kota = $this->input->post('kabupaten');
+        $this->id_kecamatan = $this->input->post('kecamatan');
+        $this->alamat = $this->input->post('alamat');
+        $this->kode_pos = $this->input->post('kode_pos');
+        $this->status = 'penjual';
+        $this->tgl_daftar = $now;
+
+        //admin adalah nama tabel
+        $this->db->insert('data_user', $this);
+    }
+
 
 
      function biodata() {
         $id_user = $this->session->userdata['login_user']['id_user'];
-        $sql = "SELECT * FROM data_user 
+        $sql = "SELECT * FROM data_user
+        inner join `province_rajaongkir` on `province_rajaongkir`.`id_prov` = data_user.id_provinsi 
+        inner join `kota_rajaongkir` on `kota_rajaongkir`.`id_kota` = data_user.id_kota
         WHERE id_user =  ?";
         $query = $this->db->query($sql,$id_user);
         if($query->num_rows>0){
@@ -58,10 +83,44 @@ Class M_user extends CI_Model {
             return false;
         }
     } 
-	 function data_penjual($id_penjual) {
+     function biodata_byID($id_user) {
+        // $id_user = $this->session->userdata['login_user']['id_user'];
+        $sql = "SELECT * FROM data_user
+        inner join `province_rajaongkir` on `province_rajaongkir`.`id_prov` = data_user.id_provinsi 
+        inner join `kota_rajaongkir` on `kota_rajaongkir`.`id_kota` = data_user.id_kota
+        WHERE id_user =  ?";
+        $query = $this->db->query($sql,$id_user);
+        if($query->num_rows>0){
+            return $query->row_array();
+        }else{
+            return false;
+        }
+    } 
+     function data_penjual($id_penjual) {
         $sql = "SELECT * FROM data_user 
         WHERE id_user =  ?";
         $query = $this->db->query($sql,$id_penjual);
+        if($query->num_rows>0){
+            return $query->row_array();
+        }else{
+            return false;
+        }
+    } 
+     function show_all_data_penjual() {
+        $sql = "SELECT * FROM data_user 
+        WHERE status =  'penjual'";
+        $query = $this->db->query($sql);
+        if($query->num_rows>0){
+            return $query->result_array();
+        }else{
+            return false;
+        }
+    } 
+
+	 function data_user_byPhone($phone) {
+        $sql = "SELECT * FROM data_user 
+        WHERE telpon =  ?";
+        $query = $this->db->query($sql,$phone);
         if($query->num_rows>0){
             return $query->row_array();
         }else{
@@ -122,7 +181,6 @@ Class M_user extends CI_Model {
         $this->db->update('data_user', $this);
     }
 
-
    function tlpuser($SenderNumber) {
         $tlp = $SenderNumber;
 
@@ -132,6 +190,40 @@ Class M_user extends CI_Model {
         // $this->db->where('telpon', $tlp);
         return $query->num_rows();//menampilkan berupa angka
 
+    }
+   function tlpPenjual($SenderNumber) {
+        $tlp = $SenderNumber;
+
+        $sql = "SELECT * FROM data_user WHERE status = 'penjual' AND telpon =  ?";
+        // $this->password = $this->input->post('password');
+        $query = $this->db->query($sql,$tlp);
+        // $this->db->where('telpon', $tlp);
+        return $query->num_rows();//menampilkan berupa angka
+
+    }
+
+    public function detailPenjual_bytlpuser($SenderNumber)
+    {
+        $tlp = $SenderNumber;
+
+        $sql = "SELECT * FROM data_user WHERE telpon =  ?";
+        // $this->password = $this->input->post('password');
+        $query = $this->db->query($sql,$tlp);
+        if ($query->num_rows() > 0) {
+          return $query->row_array();
+        }
+        // $this->db->where('telpon', $tlp);
+       // return $query->num_rows();//menampilkan berupa angka
+    }
+
+   function foto_user($id_user) {
+       $sql = "SELECT img_user FROM data_user WHERE id_user = ?";
+       $query = $this->db->query($sql, $id_user);
+       if ($query->num_rows() > 0) {
+          foreach ($query->result() as $row) {
+            return $row->img_user;
+            }
+        }
     }
 }	
 ?>

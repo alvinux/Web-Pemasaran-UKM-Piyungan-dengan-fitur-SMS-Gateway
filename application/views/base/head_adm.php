@@ -6,7 +6,7 @@
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
 
-        <?php if ($this->uri->segment(2)==='format_sms') { ?>
+        <?php if ($this->uri->segment(2)==='format_sms' || $this->uri->segment(2)==='list_penjual' ) { ?>
         <link href="<?php echo base_url(); ?>doc/themes/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
         <link href="<?php echo base_url(); ?>doc/themes/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -32,7 +32,26 @@
     
         <!-- Theme style -->
         <link href="<?php echo base_url(); ?>doc/themes/admin/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+   <!-- DATA TABLES -->
+        <link href="<?php echo base_url(); ?>doc/themes/admin/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
 
+
+        <?php } else if ($this->uri->segment(2)==='sms') { ?>
+
+        <!-- font Awesome -->
+         <link href="<?php echo base_url(); ?>doc/themes/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url(); ?>doc/themes/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<!--         <link href="<?php echo base_url(); ?>doc/themes/public/css/prettyPhoto.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>doc/themes/public/css/animate.css" rel="stylesheet"> -->
+        <!-- Ionicons -->
+        <link href="<?php echo base_url(); ?>doc/themes/admin/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    
+        <!-- Theme style -->
+        <link href="<?php echo base_url(); ?>doc/themes/admin/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <script src="<?php echo base_url(); ?>doc/themes/admin/js/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+   <!-- DATA TABLES -->
+        <link href="<?php echo base_url(); ?>doc/themes/admin/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -58,7 +77,8 @@
         <link href="<?php echo base_url(); ?>doc/themes/admin/css/AdminLTE.css" rel="stylesheet" type="text/css" />
        <!-- DATA TABLES -->
         <link href="<?php echo base_url(); ?>doc/themes/admin/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
-		    <?php }  ?>
+            <?php }  ?>
+        
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>

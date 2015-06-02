@@ -1,3 +1,6 @@
+<?php //$this->load->model(array('m_user'));
+// print_r($sms_inbox_keluhan);?>
+<?php ?>
  <section class="content">
  	<!-- MAILBOX BEGIN -->
  	<div class="mailbox row">
@@ -5,12 +8,12 @@
  			<div class="box box-solid">
  				<div class="box-body">
  					<div class="row">
- 						<div class="col-md-3 col-sm-4">
+ 						<div class="col-md-2 col-sm-3">
                             <!-- BOXES are complex enough to move the .box-header around.
                             This is an example of having the box header within the box body -->
                             <div class="box-header">
                             	<i class="fa fa-inbox"></i>
-                            	<h3 class="box-title">INBOX</h3>
+                            	<h3 class="box-title">INBOX Admin</h3>
                             </div>
                             <!-- compose message btn -->
                             <a class="btn btn-block btn-primary" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>
@@ -18,143 +21,75 @@
                             <div style="margin-top: 15px;">
                             	<ul class="nav nav-pills nav-stacked">
                             		<li class="header">Folders</li>
-                            		<li class="active"><a href="#"><i class="fa fa-inbox"></i> Inbox (14)</a></li>
-                            		<li><a href="#"><i class="fa fa-pencil-square-o"></i> Drafts</a></li>
-                            		<li><a href="#"><i class="fa fa-mail-forward"></i> Sent</a></li>
-                            		<li><a href="#"><i class="fa fa-star"></i> Starred</a></li>
-                            		<li><a href="#"><i class="fa fa-folder"></i> Junk</a></li>
+                            		<li <?php if (empty($this->uri->segment(3))) { echo 'class="active"';} else {}?>><a href="<?php echo base_url(); ?>admin/sms/"><i class="fa fa-inbox"></i> Inbox (14)</a></li>
+                            		<!-- <li><a href="#"><i class="fa fa-pencil-square-o"></i> Drafts</a></li> -->
+                            		<li <?php if ($this->uri->segment(3)=='sent') { echo 'class="active"';} else {}?>><a href="<?php echo base_url(); ?>admin/sms/sent"><i class="fa fa-mail-forward"></i> Sent</a></li>
+                            		<li <?php if ($this->uri->segment(3)=='solved') { echo 'class="active"';} else {}?>><a href="<?php echo base_url(); ?>admin/sms/solved"><i class="fa fa-check"></i> Solved</a></li>
+                            		<li <?php if ($this->uri->segment(3)=='pending') { echo 'class="active"';} else {}?>><a href="<?php echo base_url(); ?>admin/sms/pending"><i class="fa fa-exclamation-triangle"></i> Pending</a></li>
                             	</ul>
                             </div>
                         </div><!-- /.col (LEFT) -->
-                        <div class="col-md-9 col-sm-8">
-                        	<div class="row pad">
-                        		<div class="col-sm-6">
-                        			<label style="margin-right: 10px;">
-                        				<input type="checkbox" id="check-all"/>
-                        			</label>
-                        			<!-- Action button -->
-                        			<div class="btn-group">
-                        				<button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
-                        					Action <span class="caret"></span>
-                        				</button>
-                        				<ul class="dropdown-menu" role="menu">
-                        					<li><a href="#">Mark as read</a></li>
-                        					<li><a href="#">Mark as unread</a></li>
-                        					<li class="divider"></li>
-                        					<li><a href="#">Move to junk</a></li>
-                        					<li class="divider"></li>
-                        					<li><a href="#">Delete</a></li>
-                        				</ul>
-                        			</div>
+                        <div class="col-md-10 col-sm-9">
+                      
 
-                        		</div>
-                        		<div class="col-sm-6 search-form">
-                        			<form action="#" class="text-right">
-                        				<div class="input-group">
-                        					<input type="text" class="form-control input-sm" placeholder="Search">
-                        					<div class="input-group-btn">
-                        						<button type="submit" name="q" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
-                        					</div>
-                        				</div>
-                        			</form>
-                        		</div>
-                        	</div><!-- /.row -->
+                            <div class="box-body table-responsive">
+                                <!-- THE MESSAGES -->
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr style="text-align: center;">
+                                            <th>Stts</th>
+                                            <th>Tanggal Terima</th>
+                                            <th>User Pengirim</th>
+                                            <th>Pesan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                        	<div class="table-responsive">
-                        		<!-- THE MESSAGES -->
-                        		<table class="table table-mailbox">
-                        			<tr class="unread">
-                        				<td class="small-col"><input type="checkbox" /></td>
-                        				<td class="small-col"><i class="fa fa-star"></i></td>
-                        				<td class="name"><a href="#">John Doe</a></td>
-                        				<td class="subject"><a href="#">Urgent! Please read</a></td>
-                        				<td class="time">12:30 PM</td>
-                        			</tr>
-                        			<tr>
-                        				<td class="small-col"><input type="checkbox" /></td>
-                        				<td class="small-col"><i class="fa fa-star-o"></i></td>
-                        				<td class="name"><a href="#">John Doe</a></td>
-                        				<td class="subject"><a href="#">Urgent! Please read</a></td>
-                        				<td class="time">12:30 PM</td>
-                        			</tr>
-                        			<tr>
-                        				<td class="small-col"><input type="checkbox" /></td>
-                        				<td class="small-col"><i class="fa fa-star-o"></i></td>
-                        				<td class="name"><a href="#">John Doe</a></td>
-                        				<td class="subject"><a href="#">Urgent! Please read</a></td>
-                        				<td class="time">12:30 PM</td>
-                        			</tr>
-                        			<tr class="unread">
-                        				<td class="small-col"><input type="checkbox" /></td>
-                        				<td class="small-col"><i class="fa fa-star-o"></i></td>
-                        				<td class="name"><a href="#">John Doe</a></td>
-                        				<td class="subject"><a href="#">Urgent! Please read</a></td>
-                        				<td class="time">12:30 PM</td>
-                        			</tr>
-                        			<tr>
-                        				<td class="small-col"><input type="checkbox" /></td>
-                        				<td class="small-col"><i class="fa fa-star"></i></td>
-                        				<td class="name"><a href="#">John Doe</a></td>
-                        				<td class="subject"><a href="#">Urgent! Please read</a></td>
-                        				<td class="time">12:30 PM</td>
-                        			</tr>
-                        			<tr>
-                        				<td class="small-col"><input type="checkbox" /></td>
-                        				<td class="small-col"><i class="fa fa-star"></i></td>
-                        				<td class="name"><a href="#">John Doe</a></td>
-                        				<td class="subject"><a href="#">Urgent! Please read</a></td>
-                        				<td class="time">12:30 PM</td>
-                        			</tr>
-                        			<tr>
-                        				<td class="small-col"><input type="checkbox" /></td>
-                        				<td class="small-col"><i class="fa fa-star-o"></i></td>
-                        				<td class="name"><a href="#">John Doe</a></td>
-                        				<td class="subject"><a href="#">Urgent! Please read</a></td>
-                        				<td class="time">12:30 PM</td>
-                        			</tr>
-                        			<tr>
-                        				<td class="small-col"><input type="checkbox" /></td>
-                        				<td class="small-col"><i class="fa fa-star"></i></td>
-                        				<td class="name"><a href="#">John Doe</a></td>
-                        				<td class="subject"><a href="#">Urgent! Please read</a></td>
-                        				<td class="time">12:30 PM</td>
-                        			</tr>
-                        			<tr class="unread">
-                        				<td class="small-col"><input type="checkbox" /></td>
-                        				<td class="small-col"><i class="fa fa-star-o"></i></td>
-                        				<td class="name"><a href="#">John Doe</a></td>
-                        				<td class="subject"><a href="#">Urgent! Please read</a></td>
-                        				<td class="time">12:30 PM</td>
-                        			</tr>
-                        			<tr class="unread">
-                        				<td class="small-col"><input type="checkbox" /></td>
-                        				<td class="small-col"><i class="fa fa-star-o"></i></td>
-                        				<td class="name"><a href="#">John Doe</a></td>
-                        				<td class="subject"><a href="#">Urgent! Please read</a></td>
-                        				<td class="time">12:30 PM</td>
-                        			</tr>
-                        			<tr>
-                        				<td class="small-col"><input type="checkbox" /></td>
-                        				<td class="small-col"><i class="fa fa-star-o"></i></td>
-                        				<td class="name"><a href="#">John Doe</a></td>
-                        				<td class="subject"><a href="#">Urgent! Please read</a></td>
-                        				<td class="time">12:30 PM</td>
-                        			</tr>
+                                    <?php if ($this->uri->segment(3)== 'sent') { ?>
+                                        <?php foreach ($sms_data as $sms) { ?>
+                                        <tr><?php //print_r($sms);?>
+                                          
+                                            <?php if ($sms['Status'] == 'SendingError') {
+                                                echo '<td class="small-col"><i class="fa fa-times-circle" title="Tidak terkirim" style="color:red;"></i></td>';
+                                            } else {
+                                                echo '<td class="small-col"><i class="fa fa-share" title="terkirim" style="color:green;"></i></td>';
+                                                # code...
+                                            }
+                                            ?>
+                                            <!-- <td class="small-col"><i class="fa fa-star-o"></i></td> -->
+                                            <td class="time"><a href="#"><?php echo $sms['SendingDateTime'];?></a></td>
+                                            <td class="name"><?php echo $this->m_user->data_user_byPhone($sms['DestinationNumber'])['username_user'];?></td>
+                                            <td class="subject message-preview"><a href="#"><?php echo $sms['TextDecoded'];?></a></td>
+                                        </tr>
+                                        <?php }?>
+                                        
+                                    <?php } else { ?>
+                                        <?php foreach ($sms_data as $sms) { ?>
+                                        <tr>
+                                         
+                                            <?php if ($sms['Processed'] == 'true') {
+                                                echo '<td class="small-col"><i class="fa fa-check" style="color:green;"></i></td>';
+                                            } else {
+                                                echo '<td class="small-col"><i class="fa fa-exclamation-triangle" style="color:orange;"></i></td>';
+                                                # code...
+                                            }
+                                            ?>
+                                            <!-- <td class="small-col"><i class="fa fa-star-o"></i></td> -->
+                                            <td class="time"><a href="#"><?php echo $sms['ReceivingDateTime'];?></a></td>
+                                            <td class="name"><?php echo $this->m_user->data_user_byPhone($sms['SenderNumber'])['username_user'];?></td>
+                                            <td class="subject message-preview"><a href="#"><?php echo $sms['TextDecoded'];?></a></td>
+                                        </tr>
+                                        <?php }?>
+                                    <?php }?>
+                                    </tbody>
                         		</table>
                         	</div><!-- /.table-responsive -->
                         </div><!-- /.col (RIGHT) -->
                     </div><!-- /.row -->
                 </div><!-- /.box-body -->
-                <div class="box-footer clearfix">
-                	<div class="pull-right">
-                		<small>Showing 1-12/1,240</small>
-                		<button class="btn btn-xs btn-primary"><i class="fa fa-caret-left"></i></button>
-                		<button class="btn btn-xs btn-primary"><i class="fa fa-caret-right"></i></button>
-                	</div>
-                </div><!-- box-footer -->
+           
             </div><!-- /.box -->
         </div><!-- /.col (MAIN) -->
     </div>
     <!-- MAILBOX END -->
-
 </section><!-- /.content -->

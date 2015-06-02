@@ -11,154 +11,65 @@
                             <tr>
                                 <th>Keterangan Fomat</th>
                                 <th>Format SMS</th>
-                                <th>Tools</th>
+                                <th>Keterangan</th>
                      
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
+                                <td>CHP#KODE_PRODUK#PIN</td>
+                                <td>Cek Harga Produk, untuk kode produk anda bisa mengeceknya melalui (CLKP#PIN)</td>
                             </tr>
                             <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
+                                <td>Cek Jumlah Produk</td>
+                                <td>CJP#PIN</td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
+                                <td>Cek Detail Produk</td>
+                                <td>CDP#KODE_PRODUK#PIN</td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
+                                <td>Cek Stok Produk</td>
+                                <td>CSTP#KODE_PRODUK#PIN</td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
+                                <td>Cek Pesanan Terakhir</td>
+                                <td>CPT#PIN</td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
+                                <td>Cek List Kode Produk</td>
+                                <td>CLKP#PIN</td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
+                                <td>Ubah PIN</td>
+                                <td>UP#PIN_LAMA#PIN_BARU</td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
+                                <td>Ubah Harga Produk</td>
+                                <td>UHP#KODE_PRODUK#HARGA_BARU#PIN</td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
+                                <td>Ubah Status Produk</td>
+                                <td>UST#(AKTIF/NONAKTIF)#KODE_PRODUK#PIN</td>
+                                <td><</td>
                             </tr>
                             <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
+                                <td>Ubah Stok Produk</td>
+                                <td>USP#KODE_PRODUK#STOK_BARU#PIN</td>
+                                <td><</td>
                             </tr>
                             <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cek Harga Produk</td>
-                                <td>CHP#PIN</td>
-                                <td><div class="btn-group">
-                                        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Hapus"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
+                                <td>Komplain atau Hubungi admin</td>
+                                <td>K#(PESAN)</td>
+                                <td></td>
                             </tr>
                            
                         </tbody>

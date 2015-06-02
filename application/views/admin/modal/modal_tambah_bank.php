@@ -1,3 +1,4 @@
+<?php echo form_open('proses/tambah_bank'); ?>
  <div class="modal fade" id="addBank" tabindex="-1" role="dialog" aria-hidden="true">
      <div class="modal-dialog">
 		<!-- Primary box -->
@@ -14,7 +15,7 @@
 				<div class="form-group">
 					<label for="inputBank" class="col-md-4 control-label">Nama Bank</label>
 					<div class="col-md-8">
-						<input name="bank1" class="form-control" id="" placeholder="MANDIRI" type="text">
+						<input name="nama_bank" class="form-control" id="" placeholder="Nama Bank, CTH 'Mandiri','BCA','BRI' dll.." type="text">
 					</div>
 					
 				</div>
@@ -22,7 +23,7 @@
 				<div class="form-group">
 					<label for="inputNamaRek" class="col-md-4 control-label">A/N Rekening</label>
 					<div class="col-md-8">
-						<input name="namarek" class="form-control" id="" placeholder="Siapa .... ..." type="text">
+						<input name="atas_nama" class="form-control" id=""placeholder="Atas Nama Rekening" type="text">
 					</div>
 					
 				</div>
@@ -30,16 +31,17 @@
 				<div class="form-group">
 					<label for="inputNoRek" class="col-md-4 control-label">No. Rekening</label>
 					<div class="col-md-8">
-						<input name="norek" class="form-control" id="" placeholder="xxx-xxx-xxx-xxx" type="text">
+						<input name="nomor_rekening" class="form-control" id="" placeholder="Nomo Rekening, CTH. 123-456-789-0123" type="text">
 					</div>
 					
 				</div>
 			</div>
 			<div class="modal-footer" style="padding: 0; padding-top: 10px;">
-            <button class="btn" data-dismiss="modal" >Close</button>
-            <button class="btn btn-primary">Simpan</button>
-        </div>
+	            <button class="btn" data-dismiss="modal" >Close</button>
+	            <button class="btn btn-primary" type="submit">Simpan</button>
+        	</div>
 			</div><!-- /.box-body -->
 		</div><!-- /.box -->
 	</div>
 </div>
+</form>

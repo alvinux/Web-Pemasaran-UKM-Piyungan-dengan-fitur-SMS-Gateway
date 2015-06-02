@@ -1,16 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
-* 
+*
 */
-require_once 'application/controllers/base.php';
-class Cart_control extends Base {
-	
+// require_once 'application/controllers/base.php';
+class Cart_control extends CI_Controller {
+
 	public function __construct(){
 		parent::__construct();
 		$this->load->library(array('session', 'user_agent'));
         // memanggil model m_beranda
-		$this->load->model(array('m_user', 'm_admin','m_produk'));
+		$this->load->model(array('m_user', 'm_admin','m_produk','m_content'));
 	}
 
 	//tambah ke cart
@@ -27,7 +27,7 @@ class Cart_control extends Base {
 		//instanisasi
 		$produk = $queryprod['nama_produk'];
 		$harga_asli = $queryprod['harga_produk'];//harga asli
-		$total_harga_asli = $harga_asli * $jumlah;
+		// $total_harga_asli = $harga_asli * $jumlah; //sudah ada subtotal bawaan CI
 		$berat = $queryprod['berat_produk'];//berat barang perunit
 		$total_berat = $berat * $jumlah;
 		$pic = $queryprod['img_produk'];
@@ -41,7 +41,7 @@ class Cart_control extends Base {
 			'price'=>$harga,
 			'name'=>$produk,
 			'total_harga_asli'=>$total_harga_asli,
-			'total_berat'=>$total_berat,		
+			'total_berat'=>$total_berat,
 			'pic'=>$pic,
 			);
 		//eksusi ke dalam cart
@@ -57,7 +57,7 @@ class Cart_control extends Base {
 			echo "window.location='../proses/proses_daftar_user'";
 			echo '</script>';
 		}
-		
+
 	}
 //	//menambah barang dari tombol beli
 //	public function add_cart_from_home(){
@@ -167,7 +167,7 @@ class Cart_control extends Base {
 			//destroy cart
 			$this->cart->destroy();
 			redirect('beranda/selesai_belanja');
-		}else{	
+		}else{
 			echo 'Proses transaksi gagal';
 		}
 	}
@@ -183,6 +183,53 @@ class Cart_control extends Base {
 		redirect($this->agent->referrer());
 	}
 
+	public function checkout() {
+		if ($this->session->userdata('login_user')) {
+			//mengambil session proses_masuk dan menyimpan session email
+			$session_data = $this->session->userdata('login_user');
+			$data['data_user'] = $this->m_user->biodata();
+			$data['title']= 'Checkout';
+			// $data['prov']=$this->m_content->provinsi_byid($data['data_user']['id_prov']);
+
+			//load View
+			$this->load->view('base/head', $data);
+
+			$this->load->view('general/navbar');
+			$this->load->view('general/head_katagori');
+
+			$this->load->view('general/keranjang',$data);
+
+			$this->load->view('general/bottom_menu');
+			$this->load->view('general/footer');
+
+			$this->load->view('base/tail');
+		}else{
+			redirect('home');
+		}
+	}
+
+	public function pemesananSelesai(){//jika pemesanan selesai
+		$this->load->model('m_transaksi');
+		if ($this->session->userdata('login_user')) {
+			//mengambil session proses_masuk dan menyimpan session email
+			$session_data = $this->session->userdata('login_user');
+			$data['data_user'] = $this->m_user->biodata();
+			$data['title']= 'Pemesanan Selesai';
+			$data['bank'] = $this->m_content->bank();
+			$data['pesananTerakhir'] = $this->m_transaksi->transaksiTerakhir($this->session->userdata('login_user')['id_user']);//pesanan terakhir
+			// $data['prov']=$this->m_content->provinsi_byid($data['data_user']['id_prov']);
+			//load View
+			$this->load->view('base/head', $data);
+			$this->load->view('general/navbar');
+			$this->load->view('general/head_katagori');
+			$this->load->view('general/pemesanan_selesai',$data);
+			$this->load->view('general/bottom_menu');
+			$this->load->view('general/footer');
+			$this->load->view('base/tail');
+		}else{
+			redirect('home');
+		}
+	}
 }
 /* End of file barang.php */
 /* Location: ./application/controllers/barang.php */

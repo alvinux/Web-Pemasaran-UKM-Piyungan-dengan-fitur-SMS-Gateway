@@ -10,11 +10,11 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon">TO:</span>
-                                    <input name="email_to" type="email" class="form-control" placeholder="Email TO">
+                                    <span class="input-group-addon">Tujuan:</span>
+                                    <input name="email_to" type="email" class="form-control" placeholder="Nomor tujuan ..">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">CC:</span>
                                     <input name="email_to" type="email" class="form-control" placeholder="Email CC">
@@ -25,9 +25,9 @@
                                     <span class="input-group-addon">BCC:</span>
                                     <input name="email_to" type="email" class="form-control" placeholder="Email BCC">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group">
-                                <textarea name="message" id="email_message" class="form-control" placeholder="Message" style="height: 120px;"></textarea>
+                                <textarea name="message" id="email_message" class="form-control" placeholder="Pesan.." style="height: 120px;"></textarea>
                             </div>
                        <!--      <div class="form-group">
                                 <div class="btn btn-success btn-file">

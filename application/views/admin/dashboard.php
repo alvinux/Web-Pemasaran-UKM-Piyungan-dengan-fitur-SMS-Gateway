@@ -17,7 +17,7 @@
  				<div class="icon">
  					<i class="ion ion-bag"></i>
  				</div>
- 				<a href="#" class="small-box-footer">
+ 				<a href="<?php echo base_url('admin/sms');?>" class="small-box-footer">
  					More info <i class="fa fa-arrow-circle-right"></i>
  				</a>
  			</div>
@@ -36,7 +36,7 @@
  				<div class="icon">
  					<i class="ion ion-cash"></i>
  				</div>
- 				<a href="#" class="small-box-footer">
+ 				<a href="<?php echo base_url(); ?>admin/list_transaksi" class="small-box-footer">
  					More info <i class="fa fa-arrow-circle-right"></i>
  				</a>
  			</div>
@@ -117,8 +117,8 @@
  				<div class="icon">
  					<i class="ion ion-person-add"></i>
  				</div>
- 				<a href="#" class="small-box-footer">
- 					More info <i class="fa fa-arrow-circle-right"></i>
+ 				<a href="#tambahpenjual-modal" data-toggle="modal" data-target="#tambahpenjual-modal" class="small-box-footer">
+ 					Click <i class="fa fa-arrow-circle-right"></i>
  				</a>
  			</div>
  		</div><!-- ./col --> 
