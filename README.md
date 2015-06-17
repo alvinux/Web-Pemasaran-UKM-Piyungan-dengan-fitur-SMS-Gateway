@@ -4,4 +4,6 @@ Website aplikasi pemasaran produk UKM berserta fitur SMS Gateway menggunakan Gam
 -dapat melakukan transaksi jual beli <br>
 -dapat merubah detail produk("harga,stok dll") menggunakan sms <br><br>
 
-http://pnpm-piyungan.pe.hu/
+demo: http://pnpm-piyungan.pe.hu/
++ @alvinux
++ Was Helped by Mr. @xyussanx 
